@@ -84,7 +84,7 @@ Let $Q_8 \leq S_8 = \langle (1625)(3847),(1423)(5768)\rangle$ then
 $Q_8$ has a unique element of order 2
 \end{cl}
 \begin{Cor}
-$Q_8 \simeq D_4$
+$Q_8 \not\simeq D_4$
 \end{Cor}
 Another way of creating $Q_8$ is as a subgroup of $GL(2,\CC)$. Set:
 \[ x = \begin{pmatrix}
@@ -3204,6 +3204,150 @@ Recall the Pr\"{u}fer group $\ZZ_p^\infty = \{ z \in \CC : z^{p^k} = 1 \text{ fo
 \end{rem}
 
 
+\newpage
+\section{Galois Theory - Just for fun}
+
+Take fields $\FF \leq k$, with $k$ algebraically closed. Take $f(x) \in \FF[x]$, so then $f(x) = a (x - \alpha_1) \cdots (x - \alpha_n)$ for $a \in \FF$ and $\alpha_i \in k$. $\FF (\alpha)$ is the smallest subfield of $k$ containing $\alpha$. Call $\FF( \alpha_1, \dots, \alpha_n)$ the splitting field of $f(x)$ over $\FF$. 
+
+\begin{eg}
+take $f(x) = x^2 + 1 \in \QQ[x] \subseteq \RR[x]$. Then the splitting field for $f$ over $\QQ$ is $\QQ(i)$. The splitting field for $f$ over $\RR$ is $\RR(i) = \CC$. 
+\end{eg}
+
+\begin{Def}
+Call $\EE$ and extension field of $\FF$ if $\EE \subseteq \FF$ and operations of $\FF$ are those of $\EE$ restricted to $\FF$. 
+\end{Def}
+
+\begin{rem}
+$\EE$ is a vector space over $\FF$, when the elements are viewed as vectors, with scalars $\lambda \in \FF$. Call $d = \dim E$ the degree of the extension $[\EE : \FF]$. 
+\end{rem}
+
+Take $p(x) \in \FF[x]$ an irreducible polynomial of degree $n$. Then
+\[ \EE[x] = \frac{\FF[x]}{\langle p(x) \rangle} \]
+
+\begin{eg}
+$[\CC : \RR] = 2$ with basis $\{ 1, i\}$. $\CC$ is an infinite degree extension of $\QQ$. 
+\end{eg}
+
+
+\begin{Def}
+An automorphism of $E$ is a ring isomorphism on itself. We say $\sigma \in \text{Aut}(\EE)$ fixes $\FF$ point-wise if $\sigma(c) = c$ for all $c \in \FF$. 
+\end{Def}
+
+
+Call $\sigma : x \mapsto x^p$ the Frobenius map. 
+
+
+\begin{Lem}
+Take extension field $\EE$ of $\FF$, $f(x) \in \FF[x]$, and $\sigma \in \text{Aut}(\EE)$ which fixes $\FF$ pointwise. If $\alpha \in \EE$ is a root of $f(x)$, then $\sigma(\alpha)$ is also a root. 
+\end{Lem}
+
+\begin{proof}
+Expand $f(x) = \sum_{i = 0}^n c_i x^i$ with $c_i \in \FF$, so that $f(\alpha) = \sum_{i=0}^n c_i \alpha^i = 0$. But then $\sigma(c_i) = c_i \in \FF$, so
+\[ 0 = \sigma( f(\alpha) ) = \sum_{i = 1}^n \sigma( c_i \alpha^i ) = \sum_{i = 0}^n c_i \alpha^i \]
+so $\sigma(\alpha)$ is also a root.
+\end{proof}
+
+\begin{Def}
+If $\EE$ extends $\FF$ and is a splitting field of $f(x) \in \FF[x]$, then define
+\[ \text{Gal}(E | F) = \{ \sigma \in \text{Aut}(E) : \sigma \text{ fixes } \FF \text{ pointwise } \} \]
+then $\text{Gal}(E | F)$ is a group under composition.
+\end{Def}
+
+\begin{thm}
+If $f(x) \in \FF[x]$ has $n$ distinct roots in  the splitting field $n$, then $\text{Gal}(\EE : \FF) \simeq H \leq S_n$. 
+\end{thm}
+
+\begin{proof}
+Take the roots $X = \{ \alpha_1, \dots, \alpha_n \}$. Take $\sigma \in \text{Gal}(\EE | \FF)$, so then $\sigma(X) = X$. Then $\theta : \text{Gal}(\EE | \FF) \rightarrow S_n$ given by $\sigma \mapsto \sigma |_X$ is a homomorphism, and so we are done.
+\end{proof}
+
+
+\begin{Def}
+Every $f(x) \in \FF[x]$ has an irreducible factorisation:
+\[ f(x) = a p_1(x) \cdots p_r(x) \]
+Call $f(x)$ separable if each $p_i$ has no repeated roots. 
+\end{Def}
+
+\begin{thm}
+If $f(x) \in \FF[x]$ is seperable in  $\EE$, then $|\text{Gal}(\EE | \FF) = [\EE : \FF]$.
+\end{thm}
+
+\begin{eg}
+$\QQ(\sqrt{2}) = \{ a + b \sqrt{2} : a,b \in \QQ \}$. Let $\phi \in \text{Gal}(\QQ(\sqrt{2}) | \QQ)$, then $2 = \phi(2) = \phi( \sqrt{2} \sqrt{2}) = (\phi(\sqrt{2}))^2$. Thus $\phi(2) = \pm \sqrt{2}$. Thus $\text{Gal}( \QQ(\sqrt{2}) | \QQ)$ has just two elements, the identity, and the conjugation / rotation map $a + b \sqrt{2} \mapsto a - b \sqrt{2}$.  
+\end{eg}
+
+\begin{eg}
+Take $f(x) \in \RR[x]$, which splits over $\CC$. Then $|\text{Gal}( \CC | \RR)| \leq 2$.If $\sigma$ is a non trivial element of this Galois group, then it is again complex conjugation: $z = a + ib \mapsto a - bi = \overline{z}$. 
+\end{eg}
+
+\begin{thm}[Fundamental theorem of Galois Theory]
+If $\FF$ is a finite field or has characteristic $0$, and $\EE$ is a splitting field over $\FF$ of some $f(x) \in \FF[x]$, then the mapping from the set of subfields of $k$ of $\EE$ which contain $\FF$, to the set of subgroups of $\text{Gal}(\EE | \FF)$ given by $k \mapsto \text{Gal}(\EE | k)$ is injective. 
+\end{thm}
+
+\begin{proof}
+If $\FF \leq k \leq \EE$, then we have:
+\begin{enumerate}
+\item $|\EE : k| = | \text{Gal}( \EE : k )|$ and $[k : \FF] = | \text{Gal}(\EE | \FF) | / |\text{Gal}(\EE |k )|$; and
+\item If $k$ is a splitting field of $f(x) \in \FF[x]$, then $\text{Gal}(\EE | k ) \triangleleft \text{Gal}( \EE | \FF )$ and $\text{Gal}(k | \FF) \simeq \text{Gal}(\EE | \FF) / \text{Gal}(\EE | k)$. 
+\end{enumerate}
+
+\end{proof}
+
+
+
+\begin{Def}
+Take $f(x) \in \FF[x]$, and $\EE$ a splitting field. Then $f(x)$ is solvable by radicals if there exists a chain of subfields $(k_i)$ satisfying $E \subseteq k_t$ for some $t$ and each $k_{i+1}$ is obtained by adjoining a root of an element of $k_i$.   \\
+\\
+That is, $k_{i+1} = k_i (\beta_{i+1})$ so that $\beta_{i+1} \in k_{i+1}$, and $\beta_{i+1}^n \in k_i$. 
+\end{Def}
+
+\begin{eg}
+take $f(x) = ax^2 + bx + c$ and $g(x) = ax^2 + c - \frac{1}{4} b^2 = f( x - \frac{1}{2} b)$. ($g$ is called the reduced polynomial of $f$. Thus $\mu(x) = \pm \sqrt{b^2 - 4ac}$ is a root of $g(x)$ if and only if $\frac{-b \pm \mu(x)}{2a}$ is a root of $f$. \\
+\\
+Let $\FF = \QQ (b ,c)$ so $f(x) \in \FF[x]$. If $\beta = \sqrt{b^2 - 4ac}$ then $\beta^2 \in \FF$. So $k_1 = \FF(\beta)$ and $k_0 = \FF$.
+\end{eg}
+
+\begin{eg}
+Take $f(x) = x^3 + ax^2 + bx + c$, with reduced form $f( x - \frac{1}{3} a) = g(x) = x^3 + qx + r$. Again $\alpha$ is a root of $g$ iff $\alpha - \frac{1}{3} a$ is a root of $f$. The roots of $g$ are
+\[ y + \zeta, \qquad wy + w^2 \zeta, \qquad w^2 y + w \zeta \]
+where $w$ is a cube root of unity and:
+\begin{enumerate}
+\item $R = r^2 + \frac{4}{27} q^3$ 
+\item $y^3 = \frac{1}{2}( - r + \sqrt{R})$
+\item $\zeta = \frac{-q}{3y}$
+\end{enumerate}
+
+Then the chain of field extensions are 
+\begin{align*}
+k_0 &= \FF = \QQ ( q, r) \\
+k_1 &= k_0 ( \sqrt{ R }) \\
+k_2 &= k_1 ( {}^3\sqrt{-r + \sqrt{R}}) \\
+k_3 &= k_2 (w)
+\end{align*}
+ 
+\end{eg}
+
+\begin{thm}[Abel and Rufini's Theorem]
+If $f(x)$ is solvable by radicals, then every root of $f(x)$ has some expression in the coefficients of $f(x)$ involving field operations and extraction of roots. 
+\end{thm}
+
+\begin{thm}[Galois' Theorem]
+Let $f(x) \in \FF[x]$ be solvable by radicals over a field $\FF$ of character $0$. Let $\EE$ be the corresponding splitting field. Then $\text{Gal}(\EE | \FF)$ is soluble.
+\end{thm}
+
+
+\begin{eg}
+The exist quintic polynomials $f(x) = \QQ[x]$ that are not solvable by radicals. Consider $f(x) = x^5 - 4x + 2 \in \QQ[x]$. It is irreducible by Eisenstein's criterion. Take $G = \text{Gal}( \EE : \QQ)$. $f(x)$ has three real roots and two complex conjugates. $G \simeq H \leq S_5$. We must have $5 | |G|$, so by Cauchy $G$ has a five cycle. $G$ can only permute the complex roots, so $G$ has a two cycle. Thus $H = S_5$ and so is insoluble. 
+\end{eg}
+
+
+\begin{rem}
+Every finite group is a Galois group over some field. The following remains unsolved:
+\begin{center}
+Which finite groups can arise as Galois groups over $\QQ$.
+\end{center}
+It is conjectured that all can. 
+\end{rem}
 
 
 
