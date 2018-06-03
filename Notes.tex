@@ -98,7 +98,7 @@ Let
 \begin{align*}
 D_n &= \langle (12\dots n),(1,n)(2,n-1)\dots(\lfloor n / 2 \rfloor, \lfloor n / 2 \rfloor +1) \rangle \\
 S_n  &= \langle (12),(12\dots n) \rangle \\
-A_n &= \langle (123) \{ n-1 \text{cycle or } n-2 \text{cycle} \}
+A_n &= \langle (123), \{ n-1 \text{cycle or } n-2 \text{cycle} \}v \rangle
 \end{align*}
 \end{Def}
 Note $|S_n| = n!$, $|A_n| = n! / 2$.
@@ -115,17 +115,17 @@ Find $A_4$ and $S_4$
 Set $V = \FF_q^d$: a $d$-dimensional vector space over $\FF_q$. If $\FF$ is finite, then $|\FF| = p^e$ for some prime $p$ and $e \in \ZZ_+$. Now let $GL(V)$ be the group of linear transformations of $V$. 
 \end{Def}
 \begin{rem}
-Note $GL(V) \simeq GL(d, \FF_q)$.
+Note $GL(V) \simeq GL(d, \FF_q) = GL(d, q)$.
 \end{rem}
 \begin{Ex}
-Find $|GL(d,\FF_q)$ (\textit{Hint: $GL(2,2) = 6$, $GL(2,3) = 48$, $GL(3,2) = 68$. $GL(2,2) = (q^d - 1) \times ?$})
+Find $|GL(d,\FF_q)|$ (\textit{Hint: $GL(2,2) = 6$, $GL(2,3) = 48$, $GL(3,2) = 68$. $GL(2,2) = (q^d - 1) \times ?$})
 \end{Ex}
 
 \newpage
 \section{Tuesday $27^{th}$ February}
 
 \begin{Def}
-For $H \leq G$ and $x \in G$ we define the cosets of $H$ as:
+For $H \leq G$ and $x \in G$ we define the \textbf{cosets} of $H$ as:
 \begin{align*}
 Hx &= \{hx : h \in H \} \\
 xH &= \{xh : h \in H \}
@@ -135,22 +135,22 @@ xH &= \{xh : h \in H \}
 \begin{prop}
 For any $H \leq G$, we have:
 \[ G = \bigcup_{i=0}^k Hx_i = \bigcup_{j=0}^k x_jH \]
-For some $k \in \NN$ and $(x_i), (x_j)$.
+For some $k \in \NN$ and $(x_i), (x_j) \subseteq G$. Colloquially, cosets partition groups.
 \end{prop}
 \begin{Def}
 We call such $k$ the index of $H$ in $G$, and write $k = |G : H|$. 
 \end{Def}
-\begin{thm}
+\begin{thm}[Lagrange]
 If $G$ is a finite group and $H \leq G$ then $|H| \big| |G|$.
 \end{thm}
 \begin{cl}
 If $H \leq G$ and $x \in G$, then $|H| = |Hx| = |xH|$.
 \end{cl}
 \begin{Def}
-We call $H \leq G$ normal in $G$ if $xH = Hx$ for all $x \in G$. We write $H \triangleleft G$. 
+We call $H \leq G$ \textbf{normal} in $G$ if $xH = Hx$ for all $x \in G$. We write $H \triangleleft G$. 
 \end{Def}
 \begin{rem}
-This is equivalent to $x^{-1}Hx = H$ and $H^x = H$ for all $x \in G$
+This is equivalent to $x^{-1}Hx = H^x = H$ for all $x \in G$
 \end{rem}
 \begin{Def}
 If $H \triangleleft G$ then we define $Q = G / H = \{Hx : x \in G\}$, i.e. the set of (right) cosets of $H$.
@@ -163,16 +163,16 @@ If $H \leq G$ and $|G : H| = 2$ then $H \triangleleft G$.
 \end{cl}
 
 \begin{Def}
-Given the set $Q = G / H$, define a multiplication on this set $\cdot : Q \rightarrow Q$ by:
+Given the set $Q = G / H$, define a multiplication on this set $\cdot : Q \times Q \rightarrow Q$ by:
 \[ (Hx) \cdot (Hy) = H(xy) \]
 \end{Def}
 \begin{prop}
 $(G / H, \cdot)$ is a group
 \end{prop}
 \begin{Def}
-For groups $G,H$, We call a function $\phi : G \rightarrow H$ a homomorphism if
+For groups $G,H$, We call a function $\phi : G \rightarrow H$ a \textbf{homomorphism} if
 \[ \phi(xy) = \phi(x) \phi(y) \]
-We call a bijective homomorphism an isomorphism. If $\phi : G \rightarrow G$ is isomorphic then we call it an automorphism.
+We call a bijective homomorphism an isomorphism. If $\phi : G \rightarrow G$ is an isomorphism then we call it an automorphism.
 \end{Def}
 \begin{eg}
 Take $G = GL(d, \FF)$, and $H = \FF$. Then $\phi : G \rightarrow H$ given by $g \mapsto det(g)$ is a homomorphism.
@@ -189,7 +189,7 @@ We call $SL(d,\FF)$ the special linear group, and $|SL(n,\FF_q)| = |GL(n,\FF_q) 
 For $H \triangleleft G$, define $\phi : G \rightarrow G / H$ by $g \mapsto Hg$.
 \end{Def}
 \begin{rem}
-Observe $\phi$ is a homomorphism. In fact it is the canonical Homomorphism from $G$ to $G / H$. 
+Observe that $\phi$ is a homomorphism. In fact it is the canonical Homomorphism from $G$ to $G / H$. 
 \end{rem}
 \begin{cl}
 For any homomorphism $\phi : G \rightarrow H$, $\ker \phi \triangleleft G$.
@@ -200,13 +200,12 @@ Let $K = \ker \phi$, for some surjective homomorphism $\phi : G \rightarrow H$. 
 \begin{thm}[Correspondence Theorem]
 Let $G$ be a group and $N \triangleleft G$. Then:
 \begin{enumerate}
-\item If $N \leq A \leq G$ then $A / N \leq G / N$. If $N \subseteq A \triangleleft G$, then $A / N \triangleleft G \ N$.
+\item If $N \leq A \leq G$ then $A / N \leq G / N$. If $N \subseteq A \triangleleft G$, then $A / N \triangleleft G / N$.
 \item Every $A \leq G / N$ has the form $B / N$ for some suitable $B \leq G$. Every $A \triangleleft G / N$ has the form $B / N$ for some suitable $B \triangleleft G$.
 \end{enumerate}
 \end{thm}
-(TODO: Add figure)
 \begin{proof}
-For part (1), we claim that if $N \triangleleft G$ then $N \triangleleft A$, in which case $A / N$ exists and $A / N \subseteq G / N$. Also, $A / N$ is non-empty ( as $N \in A / N$ ), so take $Na, Nb \in A/N$. Then
+For part (1), we claim that if $N \triangleleft G$ then $N \triangleleft A$. Then $A / N$ exists and $A / N \subseteq G / N$. Also, $A / N$ is non-empty ( as $N \in A / N$ ), so take $Na, Nb \in A/N$. Then
 \[ (Na)(Nb)^{-1} = N(ab^{-1}) \in A / N \]
 Thus $A / N \leq G / N$. If $A \triangleleft G$, then $g^{-1} a g \in A$ for all $g \in G$, so:
 \[ (Ng)^{-1} (Na) (Ng) = N(g^{-1}ag) \in A / N \]
@@ -229,11 +228,10 @@ $HK \leq G$ if, and only if, $HK = KH$.
 If $N \triangleleft G$ and $H \leq G$, then $NH \leq G$. 
 \end{Cor}
 \begin{Cor}
-If $N \triangleleft G$ and $H \leq G$, then $\langle N, H \rangle = NH$. This is because clearly $NH \leq \langle N, H \rangle$, but also $NH \leq G$, so as $\langle N, H \rangle = NH$ is the smallest subgroup containing $NH$, they must be equal.
+If $N \triangleleft G$ and $H \leq G$, then $\langle N, H \rangle = NH$. This is because clearly $NH \leq \langle N, H \rangle$, but also $NH \leq G$, so as $\langle N, H \rangle$ is the smallest subgroup containing $NH$, they must be equal.
 \end{Cor}
 \begin{eg}
 Take $G = D_4 = \langle a , b \rangle$ where $a = (1234), b =(14)(23)$. Let $N = \langle a^2 \rangle \triangleleft G$. Then $| G / N | = 4$. Also, $G / N \simeq C_2 \times C_2$.
-(TODO : add diagram)
 \end{eg}
 
 
@@ -246,7 +244,7 @@ We call $Z(G) = \{ y \in G : xy = yx \, \forall x \in G \}$ the center of $G$.
 $Z(G) \triangleleft G$.
 \end{Lem}
 \begin{rem}
-Observe that $Z(G)$ is abelian and $G$ is abelian if and only if $Z(G) = G$.
+Observe that $Z(G)$ is abelian, and $G$ is abelian if and only if $Z(G) = G$.
 \end{rem}
 \begin{eg}
 $Z(S_3) = 1$. In fact, $Z(S_n) = 1$ for every $n \geq 3$. Also, for $G = GL(2, \RR)$:
@@ -256,6 +254,8 @@ $Z(D_4) = \langle (13)(24) \rangle$.
 \begin{Def}
 We define the centraliser of $g \in G$ as 
 \[ C_G(g) = \{ x \in G : xg = gx \} \]
+We define the centraliser of a subset $A \subseteq G$ as 
+\[ C_G(A) = \{ x \in G : xa = ax \text{ for all } a \in A \} \]
 \end{Def}
 \begin{rem}
 Note that $C_G(g) \neq \varnothing$ and $C_G(g) \leq G$. 
@@ -274,12 +274,10 @@ If $\phi$ is an automorphism on $G$, then $\phi(Z(G)) = Z(G)$. We say $Z$ is fix
 \end{prop}
 
 \begin{Def}
-We say $C$ is a characteristic of $G$ if $C \phi = C$ for every automorphism $\phi$.
-(TODO : Check with Eamonn)
-We say $C \leq G$ is a characteristic subgroup of $G$ if $\phi(C) \leq C$ for every $\phi \in \text{Aut}(G)$. 
+We say $c \in G$ is a characteristic of $G$ if $\phi (c) = c$ for every automorphism $\phi$. We say $C \leq G$ is a characteristic subgroup of $G$ if $\phi(C) \leq C$ for every $\phi \in \text{Aut}(G)$. 
 \end{Def}
 \begin{Lem}
-The set of automorphisms of $G$, paired with composition, forms a group. 
+The set of automorphisms of $G$, $\text{Aut}(G)$,  paired with composition, forms a group.
 \end{Lem}
 \begin{Def}
 Let $g \in G$. The define the inner automorphism of $G$ generated by $g$ as:
@@ -307,12 +305,12 @@ Note that often $\theta \in \text{Aut}(G) \setminus \text{Inn}(G)$ is called an 
 Show $\text{Inn}(G) \simeq G / Z(G)$. (Hint: $1^{st}$ Isomorphism theorem. Define $\psi : G \rightarrow \text{Inn}(G)$ with $\ker \psi = Z(G)$.)
 \end{Ex}
 \begin{prop}
-For any $\phi \in \text{Aut}(G)$, if $G = \langle g \rangle$ then $G = \langle \phi(g) \rangle$.
+For any $\phi \in \text{Aut}(G)$, if $G = \langle g \rangle$ then $G = \langle \phi(g) \rangle$. That is, automorphisms map generators to generators. 
 \end{prop}
 
 \begin{eg}
-Take $(\ZZ, +) (= \langle x \rangle, x \in \{1,-1\})$. Thus 
-\[ \text{Aut} \big( (\ZZ, +) \big) = \{ \phi_a : x \mapsto x, \phi_b : x \mapsto -x\} \simeq \ZZ_2 \]
+Take $(\ZZ, +) = \langle 1 \rangle = \langle -1 \rangle$. Thus 
+\[ \text{Aut} \big( (\ZZ, +) \big) = \{ \phi_a = x \mapsto x, \phi_b = x \mapsto -x\} \simeq \ZZ_2 \]
 \end{eg}
 
 \begin{Lem}
@@ -325,11 +323,11 @@ If p is prime then $\text{Aut}(\ZZ_p) = \ZZ_{p-1}$.
 \end{Cor}
 
 \begin{Def}
-We call $G$ an elementary abelian group if $G \simeq (C_p )^d$. 
+We call $G$ an \textbf{elementary abelian group} if $G \simeq (C_p )^d$. 
 \end{Def}
 
 \begin{rem}
-Note that every element of an elementary group has order $1$ or $p$.
+Note that every element of an elementary abelian group has order $1$ or $p$.
 \end{rem}
 
 \begin{thm}
@@ -343,6 +341,7 @@ Characteristic subgroups are fixed under automorphisms, normal subgroups are fix
 \begin{Def}
 Let $H \leq G$. Then define the normaliser of $H$ in $G$ as:
 \[ N_G(H) = \{ g \in G : g^{-1}Hg = H \} \]
+This is the largest subgroup of $G$ in which $H$ is normal.
 \end{Def}
 \begin{Lem}
 $N_G(H) \leq G$. 
@@ -351,21 +350,16 @@ $N_G(H) \leq G$.
 $H \triangleleft G$ if and only if $N_G(H) = G$. 
 \end{rem}
 \begin{eg}
-Let $G = S_3$. Then:
-\begin{align*}
-H_1 &= \langle (12)\rangle \implies N_G(H_1) = H_1 \\
-H_2 &= \langle (123) \rangle \implies N_G(H_2) = H_2 
-\end{align*}
-
+Let $G = S_3$. Then $N_{S_3}( \langle (12) \rangle) = \langle (12) \rangle$ and $N_{S_3}( \langle (123) \rangle ) = \langle (123) \rangle$.
 \end{eg}
 
 \begin{Def}
 Let $x,y \in G$. Then define:
 \[ [x,y] = x^{-1} y^{-1} xy \]
-We call this the commutator of $x,y$. 
+We call this the \textbf{commutator} of $x,y$. 
 \end{Def}
 \begin{eg}
-Which $c \in S_3$ are commutators? We know All commutators must have even order, so $x \in A_3 = \{ 1, (123), (132) \}$. But we also have:
+Which $c \in S_3$ are commutators? We know all commutators must have even order, so $x \in A_3 = \{ 1, (123), (132) \}$. But we also have:
 \begin{align*}
 [(12), (12)] &= 1 \\
 [(12), (23)] &= (123) \\
@@ -376,30 +370,26 @@ So all elements of $A_3$ are commutators of $S_3$
 \begin{Def}
 We derived group $G' \leq G$ is defined as:
 \[ G' = \langle [x,y] : x,y \in G \rangle \]
-I.e., the group generated by all commutators. 
+i.e., the group generated by all commutators. 
 \end{Def}
 \begin{eg}
 $S_3 ' = A_3$, as shown. In general $S_n ' = A_n$ for all $n \geq 3$. Prove as exercise.
 \end{eg}
 
 \begin{Lem}
-$G ' \triangleleft G$.
-\end{Lem}
-
-\begin{Lem}
-Both $Z(G)$ and $G'$ are characteristic subgroups of $G$. And are both therefore also normal. 
+Both $Z(G)$ and $G'$ are characteristic subgroups of $G$, and are both therefore also normal. 
 \end{Lem}
 
 
 \begin{eg}
-Take $A_4 = G$. $G' = \langle (13)(24), (12)(34) \rangle = \ZZ_2 \times \ZZ_2$. Thus $G' \triangleleft G$.
+Take $A_4 = G$. $G' = \langle (13)(24), (12)(34) \rangle = \ZZ_2 \times \ZZ_2$.
 \end{eg}
 
 \begin{rem}
 There exists a group $G$ with order 96. It has 29 commutators, but $|G'| = 32$. This is the smallest group where $\{commutators\} \neq G'$.
 \end{rem}
 \begin{rem}
-If $G$ is a finite simple group then every $g \in G' = G$ is a commutator.
+If $G$ is a finite non-abelian simple group then every $g \in G' = G$ is a commutator.
 \end{rem}
 
 
@@ -407,79 +397,71 @@ If $G$ is a finite simple group then every $g \in G' = G$ is a commutator.
 \section{Monday $5^{th}$ March}
 
 \begin{Lem}
-Take $N \triangleleft G$, then 
-\[ G / N \text{is abelian if and only if } G' \leq N \] 
+Take $N \triangleleft G$, then $G / N$ is abelian if and only if  $G' \leq N$. 
 \end{Lem}
 
 \begin{proof}
-$G/N$ is abelian iff $Nx \cdot Ny = Ny \cdot Nx$ for all $x,y \in G$. Which is equivalent to $N = Nx^{-1}y^{-1}xy$, which implies $[x,y] \in N$. $N$ all commutators, and hence $N \geq G'$. The converse follows exactly in reverse.
+$G/N$ is abelian if and only if $Nx \cdot Ny = Ny \cdot Nx$ for all $x,y \in G$. Which is equivalent to $N = Nx^{-1}y^{-1}xy$, which implies $[x,y] \in N$. $N$ contains all commutators, and hence $N \geq G'$. The converse follows exactly in reverse.
 \end{proof}
 \begin{Def}
-Take homomorphism $\phi : G \rightarrow H$. Then if $U \leq G$,
-\[ \phi(U) = \{ \phi(u) : u \in U \} \]
-if $V \leq H$, then let
-\[ \phi^{-1} (V) = \{ u \in G : \phi(u) \in V \} \]
+Take homomorphism $\phi : G \rightarrow H$. Then if $U \leq G$, define its \textbf{Image} under $\phi$ as:
+\[ \phi(U) = \{ \phi(u) : u \in U \} \subseteq H.\]
+If $V \leq H$, then define it \textbf{Inverse Image} under $\phi$ as:
+\[ \phi^{-1} (V) = \{ u \in G : \phi(u) \in V \} \subseteq G\]
 \end{Def}
 
 \begin{rem}
-Whilst $\phi^{-1}$ can be defined, there need not be a map $\phi^{-1}$
+Whilst $\phi^{-1}$ can be defined for any map $\phi$, there need not be an inverse map $\phi^{-1}$ as $\phi$ may not be bijective.
 \end{rem}
 
 \begin{Lem}
 Take homomorphism $\phi : G \rightarrow H$.
 \begin{enumerate}
 \item  If $U \leq G$ Then $\phi(U) \leq H$
-\item If $V \leq H$ then $\phi^{-1}(V) \leq G$ that contains $\ker \phi$. 
+\item If $V \leq H$ then $\ker \phi \leq \phi^{-1}(V) \leq G$. 
 \end{enumerate}
 
 \end{Lem}
 
 \begin{eg}
-Take $N \triangleleft G$ and $\phi: G \rightarrow G / N$ the canonical homomorphism determined by $N$: $x \mapsto Nx$. Let $H \leq G$. Then what is $\phi(H)$?.
-(TODO: Add diagram 1)
-Observe $NH \leq G$, and $N \triangleleft NH$. Thus $NH / N \leq G / N$. Now
+Take $N \triangleleft G$ and $\phi: G \rightarrow G / N$ the canonical homomorphism $x \mapsto Nx$. Let $H \leq G$. Then what is $\phi(H)$?. Observe $NH \leq G$, and $N \triangleleft NH$. Thus $NH / N \leq G / N$. Now
 \[ NH / N = \{ Nnh : n \in N, h \in H \} = \{ Nh : h \in H \} = \phi(H) \]
 \end{eg}
 
 \begin{thm}[Second Isomorphism Theorem]
 Take $N \triangleleft G$ and $H \leq G$. Then $N \cap H \triangleleft H$ and 
-\[ H / (N \cap H) \simeq NH / N \]
+\[ H / (N \cap H) \simeq NH / N. \]
 \end{thm}
 
 \begin{proof}
-Define $\phi : G \rightarrow G / N$ by $g \mapsto Ng$. Then let $\psi$ be the restriction of $\phi$ to $H \leq G$. Then $\psi$ is a homomorphism from $H \rightarrow \psi(H) = NH / N$. Note that it is surjective. Now 
+Define $\phi : G \rightarrow G / N$ by $g \mapsto Ng$. Then let $\psi$ be the restriction of $\phi$ to $H \leq G$. Then $\psi$ is a homomorphism from $H$ to $\psi(H) = NH / N$. Note that it is surjective. Now 
 \[ \ker \psi = H \cap \ker \phi = H \cap N \]
-But also $\ker \psi \triangleleft H$ and so $H \cap N \triangleleft H$. By the first isomorphism theorem:
-\[ H / \ker \psi = H / (H \cap N) \simeq NH / N \]
+but also $\ker \psi \triangleleft H$ and so $H \cap N \triangleleft H$. By the first isomorphism theorem:
+\[ H / \ker \psi = H / (H \cap N) \simeq NH / N. \]
 \end{proof}
 
 \begin{eg}
-Take $G = S_4 = \langle (1234), (12) \rangle$, take $N = \langle (12)(34), (13)(24) \rangle$, and $H = \langle (1234) \rangle$. Then
-\[ H \cap N = \langle (13)(24) \rangle \qquad H / (H \cap N) \simeq \ZZ_2 \]
-Also see that:
-\[NH / N \simeq \ZZ_2 \]
+Take $G = S_4 = \langle (1234), (12) \rangle$, take $N = \langle (12)(34), (13)(24) \rangle = A_4$, and $H = \langle (1234) \rangle \simeq C_4$. Then $H \cap N = \langle (13)(24) \rangle$ and  $H / (H \cap N) \simeq \ZZ_2$. Thus $NH / N \simeq \ZZ_2$
 \end{eg}
 
 
 \begin{Lem}
-Take homomorphism $\phi : G_1 \rightarrow G_2$ where $\phi(N_1) = N2$ for $N_i \triangleleft G$, ($i = 1,2$). Then there exists a homomorphism $\psi : G_1 / N_1 \rightarrow G_2 / N_2$ defined by:
-\[ (N_1x)\psi = N_2(x\phi) \]
+Let $G_1$ and $G_2$ be groups with normal subgroups $N_i \triangleleft G_i$. Take homomorphism $\phi : G_1 \rightarrow G_2$ where $\phi(N_1) = N_2$. Then there exists a homomorphism $\psi : G_1 / N_1 \rightarrow G_2 / N_2$ defined by:
+\[ \psi (N_1x) = N_2(\phi(x)) \]
 for all $x \in G_1$.   
 \end{Lem}
 
 \begin{proof}
-%If $\psi$ a well defined map? Does $N_2(x\phi)$ depend on the $x$ chosen from $N_1 x$. 
-Let $N_1 x = N_1 y$. Then $y = nx$ for some $n \in N_1$. So $y \phi = (nx)\phi = (n\phi)(x\phi) \in N_2 (x\phi)$. Thus $N_2(y\phi) = N_1(x\phi)$. Thus the choice of $x \in N_1$ does not matter and the map is well defined. \\
+Let $N_1 x = N_1 y$. Then $y = nx$ for some $n \in N_1$. So $\phi(y) = \phi(nx) = \phi(n)\phi(x) \in N_2 (\phi(x))$. Thus $N_2(\phi(y)) = N_1(\phi(x))$. Thus the choice of $x \in N_1$ does not matter and the map is well defined. \\
 \\
 Now let $g,h \in G_1$. And consider:
-\[ (N_1 g)\psi (N_1 h)\psi = N_2(g\phi) N_2(h\phi) = N_2(g\phi)(h\phi) = N_2((gh)\phi) = (N_1(gh))\psi \]
+\[ \psi(N_1 g)\psi (N_1 h)= N_2(\phi(g)) N_2(\phi(h)) = N_2(\phi(g))(\phi(h)) = N_2(\phi(gh)) = \psi(N_1(gh)) \]
 Thus $\psi$ is indeed homomorphic. 
 \end{proof}
 
 \begin{thm}[Third Isomorphism Theorem]
 Let $M, N \triangleleft G$, and $M \geq N$. Then 
 \[ \frac{G/N}{M / N} \simeq G / M \]
-(TODO: add diagram 2)
 \end{thm}
 
 
@@ -488,13 +470,14 @@ Note $N \triangleleft G$ thus $N \triangleleft M$ since $M \geq N$. So by the co
 \[ M / N \trianglelefteq G / N \]
 Using the previous lemma, take $G_1 = G$, $N_1 = N$, $G_2 = G / M$, and $N_2 = 1$. Let $\phi : G \rightarrow G / M$ and obtain the corresponding $\psi$ from the lemma. Then $\psi : G / N \rightarrow G / M$ where $Nx \mapsto Mx$ for all $x \in G$. \\
 \\
-Now $\ker \psi \triangleleft G / N$, and it has the form $K / N$ for some $K \triangleleft G$ (again by the correspondence theorem). Let $Nx \in K / N$, then $(Nx) \psi = M$. But $Mx = M$ iff $x \in M$, so $K / N \leq M / N$.  If $x \in M$ then $(Nx) \psi = M$ and so $Nx \in K / N$. Therefore $K / N \geq M / N$. Hence
-\[ \ker \psi  = M/ N \qquad \text{and so} \qquad \frac{G / N}{M / N} \simeq \frac{G}{M} \]
+Now $\ker \psi \triangleleft G / N$, and it has the form $K / N$ for some $K \triangleleft G$ (again by the correspondence theorem). Let $Nx \in K / N$, then $\psi (Nx)  = M$. But $Mx = M$ if and only if $x \in M$, so $K / N \leq M / N$.  If $x \in M$ then $\psi (Nx) = M$ and so $Nx \in K / N$. Therefore $K / N \geq M / N$. Hence $\ker \psi  = M/ N$ and so by the first isomorphism theorem \[ \frac{G / N}{M / N} \simeq \frac{G}{M} \]
 
 \end{proof}
 
+
+\subsection{Group Action}
 \begin{Def}
-Take $G$ and $\Omega \neq \varnothing$. Assume $g \in G$, and $\alpha \in \Omega$. There is defined a unique $g \cdot \alpha \in \Omega$
+Take a group $G$ and some non-empty set $\Omega$. Let $g \in G$, and $\alpha \in \Omega$. Let $\cdot: \Omega \times G \rightarrow \Omega$ be such that 
 \begin{enumerate}
 \item $\alpha \cdot 1_G = \alpha$ for all $\alpha \in \Omega$ 
 \item $(\alpha \cdot g) \cdot h = \alpha \cdot (gh)$ for all $\alpha \in \Omega$ and $g,h \in G$.   
@@ -511,79 +494,65 @@ Take $\Omega \neq \varnothing$, $G \leq \text{Sym}(\Omega)$ then for all $\alpha
 \end{enumerate}
 \end{eg}
 
-\begin{Def}
-If $\Omega = G$, then we call is a regular action. 
-\end{Def}
+
 
 \newpage
 \section{Tuesday $6^{th}$ March}
 
 \begin{Cor}
-$G \simeq S \leq \text{Sym} (\Omega)$. 
+$G \simeq S \leq \text{Sym} (\Omega)$. (Unsure of this)
 \end{Cor}
 
+
+\subsubsection{Key Examples of Group Actions}
+
 \begin{Def}
-Take a group $G  =\Omega$, then take the group action $\alpha \cdot g = g^{-1} \alpha g$. We call this the conjugation action. 
+If $\Omega = G$ and $\alpha \cdot g = \alpha g$, then we call it a \textbf{regular action}. 
 \end{Def}
+
+\begin{Def}
+Define the \textbf{Conjugation Action} of a group $G$ on itself as $\alpha \cdot g = g^{-1} \alpha g$.
+\end{Def}
+
 \begin{rem}
 The group action need not be the same as the the original group multiplication.
 \end{rem}
+
 \begin{Def}
-For a group $G$ and $X \subseteq G$, consider
-\[ Xg = \{ xg : x \in X \} \qquad \forall g \in G \]
-Define an action on $\mathcal{P}(G)$ by:
-\[ X\cdot g = Xg \]
-We call this the action on subsets. \\
-\\
-If $H \leq G$, take $\Omega = \{ Hx : x \in G\}$. If $x \in \Omega$, then
-\[ Xg \in G \qquad \text{since} \quad (Hx)g = H(xg). \]
-I.e. right multiplication defines an action of $G$ on $\Omega$. We call this the action on subgroups.
+Take a group $G$ and take $\Omega = 2^G$ as its power set. Since $Xg = \{ xg : x \in X \} \in \Omega$ for all $X \in \Omega$ and $g \in G$, we define $X \cdot g = Xg$. We call the the \textbf{Action on Subsets} of $G$.
+\end{Def}
+
+\begin{Def}
+If $H \leq G$, take $\Omega = \{ Hx : x \in G\}$. Define $(Hx) \cdot g = H(xg) \in \Omega$. We call this the \textbf{Action on Subgroup}, and say $G$ acts on $H$ by right multiplication.
 \end{Def}
 
 \begin{Lem}
-Take $G$, and a group action of $G$ on some $\Omega$. For $g \in G$ define $\pi_g : \Omega \rightarrow \Omega$ by $\alpha \mapsto \alpha \cdot g$. Then
-\[ \pi_g \in \text{Sym} ( \Omega ), \]
-and the map $\theta : G \rightarrow \text{Sym} (\Omega)$ given by $g \mapsto \pi_g$ is a homomorphism. Note that $\ker \theta$ is the kernel of the action.
+Take a group $G$, let it act on some non-empty $\Omega$. For $g \in G$ define $\pi_g : \Omega \rightarrow \Omega$ by $\alpha \mapsto \alpha \cdot g$. Then $\pi_g \in \text{Sym} ( \Omega )$, and the map $\theta : G \rightarrow \text{Sym} (\Omega)$ given by $g \mapsto \pi_g$ is a homomorphism. Note that $\ker \theta$ is the kernel of the action.
 \end{Lem}
-
-(TODO : Insert D3)
 
 \begin{proof}
 For all $g,h \in G$:
 \begin{align*}
-(\alpha) \pi_g \pi_h &= (\alpha \cdot \pi_g) \pi_h \\
-                    &= (\alpha \cdot g) \cdot h \\
-                    &= \alpha \cdot (gh) \\
-                    &= \alpha \pi_{gh}
+(\alpha)^{\pi_g \pi_h} &= (\alpha \cdot g) \cdot h = \alpha \cdot (gh) = (\alpha )^{\pi_{gh}}
 \end{align*}
-Also $\alpha \pi_1 = \alpha \cdot 1 = \alpha$ so $\pi_1$ is the identity. \\
-\\
-For $g \in G$, $\pi_g \pi_{g^-1} = \pi_1$ so $\pi_g \in \text{Sym}(\Omega)$. 
+Also $ \pi_1 (\alpha)= \alpha \cdot 1 = \alpha$ so $\pi_1$ is the identity. For $g \in G$, $\pi_g \pi_{g^{-1}} = \pi_1$ so $\pi_g \in \text{Sym}(\Omega)$. 
 \[ \theta(g) \theta(h) = \pi_g \pi_h = \pi_{gh} = \theta(gh) \]
-Thus $\theta$ is a homomorphism. \\
-\\
-Lastly, for $g \in G$, $ g \in \ker \theta$ if and only if $\pi_g = \pi_1$. So $\alpha \cdot g = \alpha$ for all $\alpha \in \Omega$: i.e. $g\in $ kernel of the action. 
+Thus $\theta$ is a homomorphism. Lastly, for $g \in G$, $ g \in \ker \theta$ if and only if $\pi_g = \pi_1$. So $\alpha \cdot g = \alpha$ for all $\alpha \in \Omega$: i.e. $g$ is in the kernel of the action. 
 \end{proof}
 
 \begin{Cor}
 $\theta : G \rightarrow \text{Sym} (\Omega)$ is a homomorphism then
-\[ K = \ker \theta \triangleleft G \quad \text{and} \quad G / \ker \theta \simeq \text{Im} \theta \]
+\[ K = \ker \theta \triangleleft G \quad \text{and} \quad G / \ker \theta \simeq  \theta (G)\]
 \end{Cor}
 
 \begin{thm}
-If $H \leq G$, and $|G : H| = n < \infty$, there exists $N \triangle G$ such that $N \leq H$ and $|G : N| \big| n!$, if $n > 1$ and $|G| \nmid n!$, then $G$ is not simple.
+If $H \leq G$, and $|G : H| = n < \infty$, there exists $N \triangleleft G$ such that $N \leq H$ and $|G : N| \big| n!$. If $n > 1$ and $|G| \nmid n!$, then $G$ is not simple.
 \end{thm}
 
 \begin{proof}
-$G$ acts by right multiplication on 
-\[ \Omega = \{ Hx : x \in G \} \qquad |\Omega| = n \]
-So $\theta : G \rightarrow \text{Sym}(n)$. Take $N = \ker \theta$ and so $G / N \simeq \text{Sym}(\Omega)$. Now
-\[ |S_n| = n! \implies |G : N| = |G / N| \big| n! \]
-To see that $N \leq H$, let $x \in N$ and $H \in \Omega$. Then 
+$G$ acts by right multiplication on cosets of $G$: $\Omega = \{ Hx : x \in G \}$. Note that $|\Omega| = n$. So take some homomorphism $\theta : G \rightarrow \text{Sym}(n)$. Take $N = \ker \theta$ and so $G / N \simeq \text{Sym}(\Omega)$. Now $|S_n| = n!$ so  $|G : N| = |G / N| \big| n!$. To see that $N \leq H$, let $x \in N$ and $H \in \Omega$. Then 
 \[ x \in Hx = H \cdot x = H \]
-since $x \in N$. Thus $N \leq H$. \\
-\\
-If $n > 1$: then $H < G$ and so $N < G$. If $n = 1$ then $|G| = |G / N| \big| n!$. This proves $N > 1$ so $G$ is not finite.
+since $x \in N$. Thus $N \leq H$. If $n > 1$: then $H < G$ and so $N < G$. If $n = 1$ then $|G| = |G / N| \big| n!$. This proves $N > 1$ so $G$ is not simple.
 \end{proof}
 
 \begin{Cor}
@@ -591,33 +560,30 @@ Take $H \leq G$, with $G$ finite. If $|G:H| = p$ and p is the smallest prime div
 \end{Cor}
 
 \begin{rem}
-Take $H \leq G$ with $|G:H| < \infty$. Then there exists $N \triangle G$ of finite index with $N \leq H$. We call
-\[ N = \text{core}_G(H), \]
-which is the largest normal subgroup of $G$ contained in $H$. 
+Take $H \leq G$ with $|G:H| < \infty$. Then there exists $N \triangleleft G$ of finite index with $N \leq H$. We call
+\[ N = \text{Core}_G(H), \]
+which is the largest normal subgroup of $G$ contained in $H$, as shown below. 
 \end{rem}
 
 \begin{Lem}
 Take $H \leq G$ of finite index. Then
-\[ N = \text{core}_G(H) = \bigcap_{x\ in G} H^x \]
+\[ N = \text{Core}_G(H) = \bigcap_{x \in G} H^x \]
 If $M \triangleleft G$ and $M \leq H$, then $M \leq N$.
 \end{Lem}
 \begin{proof}
-(TODO: exercise)
+Left as exercise.
 \end{proof}
 
 \begin{eg}
-Take $G = S_4 = \langle (1234), (12) \rangle$. And $H = \langle (13)(24), (34) \rangle \simeq D_4 \leq S_4$. Then $|G:H| = 3|$. Thus there exists a $\theta : G \rightarrow \text{Sym} (3)$. Take
-\[ N = \ker \theta \qquad N = \text{Core}_G(H) = H \cap H^{(1234)} \cap H^{(12)} = \langle (12)(34), (14)(23) \rangle \simeq \ZZ_2 \times \ZZ_2 \]
+Take $G = S_4 = \langle (1234), (12) \rangle$ and $H = \langle (13)(24), (34) \rangle = D_4 \leq S_4$. Then $|G:H| = 3$. Thus there exists a non trivial homomorphism $\theta : G \rightarrow \text{Sym} (3)$. Take $N = \ker \theta$, then 
+\[ N = \text{Core}_G(H) = H \cap H^{(1234)} \cap H^{(12)} = \langle (12)(34), (14)(23) \rangle \simeq \ZZ_2 \times \ZZ_2 \]
 Also $G / N \simeq \text{Sym}(3)$.
 \end{eg}
 
 
 \begin{Def}
-We call a group action $(G, \Omega, \cdot)$ transitive if for every two elements $\alpha, \beta \in \Omega$ there exists a $G \in G$ such that $\alpha \cdot g = \beta$. 
+We call a group action $(G, \Omega, \cdot)$ \textbf{transitive} if for every two elements $\alpha, \beta \in \Omega$ there exists a $g \in G$ such that $\alpha \cdot g = \beta$. 
 \end{Def}
-\begin{rem}
-i.e. the number of orbits is 1
-\end{rem}
 
 
 \begin{eg}
@@ -629,19 +595,21 @@ A regular action on $G$ is not necessarily transitive, because only elements of 
 \end{eg}
 
 \begin{Def}
-Take a group action $(G, \Omega, \cdot)$. The orbit of this action are of the form $ \{ \alpha \cdot g : g \in G \} \subseteq \Omega$.
+Take a group action $(G, \Omega, \cdot)$. The \textbf{Orbits} of this action are of the form $ \{ \alpha \cdot g : g \in G \} \subseteq \Omega$.
 Then the action is transitive if and only if the number of orbits is 1.
 \end{Def}
 
+\begin{rem}
+Transitive actions have only one orbit.
+\end{rem}
+
 
 \begin{Lem}
-$\Omega$ is a disjoint union of orbits. \\
-\\
-This is analogus to parition of $G$ under cosets of $H \leq G$.
+$\Omega$ is a disjoint union of orbits. This is analogous to partition of $G$ under cosets of $H \leq G$.
 \end{Lem}
 
 \begin{eg}
-Conjugation action of $G$ on $\Omega$ is equivalent to conjugacy classes of elements of $G$. I.e. $x \in Z(G) \implies \text{class}(x) = \{x\}$.
+Orbits of a conjugation action of $G$ on $\Omega$ is equivalent to conjugacy classes of elements of $G$; i.e., $x \in Z(G)$ implies  $\text{Cl}(x) = \{x\}$.
 \end{eg}
 
 \begin{eg}
@@ -656,36 +624,32 @@ $S_3$, $\Omega = \{1,2,3\}$. This action has one orbit, $x = (123)$ and the conj
 \begin{Def}
 For a group action $(G , \Omega, \cdot)$ we call
 \[ G_\alpha = \{ g \in G : \alpha \cdot g = \alpha \} \]
-the stabiliser of $\alpha \in \Omega$ in $G$. 
+the \textbf{stabiliser} of $\alpha \in \Omega$ in $G$. 
 \end{Def}
 
 \begin{Lem}
-$G_\alpha \leq G$. 
+$G_\alpha \leq G$ for all $\alpha \in \Omega$. 
 \end{Lem}
 
 \begin{eg}
-Consider a congucation action $(G, \Omega, \cdot)$. Then 
+Consider a conjugation action $(G, \Omega, \cdot)$. Then 
 \[ G_x = \{ g \in G : x^g = x \} = C_G(x) \]
 \end{eg}
 
 \begin{eg}
-Consider a congugation on a subgroup $X \leq G$, given by $X \cdot g = X^g$. THen
-\[ G_x = \{ g \in G : X^g = X \} = N_G(x) \]
+Consider a conjugation on a subgroup $X \leq G$, given by $X \cdot g = X^g$. Then
+\[ G_X = \{ g \in G : X^g = X \} = N_G(X) \]
 \end{eg}
 
 \begin{eg}
-COnsider an action of $G$ on right cosets of $H \leq G$. i.e. $\Omega = \{ Hx : x \in G\}$. Then the stabiliser of $Hx$ in $G$ is $H^x$. 
+Consider an action of $G$ on right cosets of $H \leq G$. Then the stabiliser of $Hx$ in $G$ is $H^x$; $N_G(Hx) = H^x$. 
 \end{eg}
 
 
 \begin{thm}[Orbit Stabiliser Theorem]
-Take a group action $(G, \Omega, \cdot)$. Then let $O_\alpha$ be the orbit of $\alpha \in \Omega$ under $\cdot$. Let $H = G_\alpha$ be the stabiliser of $\alpha$ in $G$. Then there exists a bijection
-\[ o_\alpha \leftrightarrow \{ G_\alpha x : x \in G \} \] 
+Take a group action $(G, \Omega, \cdot)$. Then let $O_\alpha$ be the orbit of $\alpha \in \Omega$ under the action$\cdot$. Let $G_\alpha$ be the stabiliser of $\alpha$ in $G$. Then there exists a bijection
+\[ O_\alpha \leftrightarrow \{ G_\alpha x : x \in G \} \] 
 \end{thm}
-\begin{rem}
-If $G$ is finite then 
-\[ |G| = |O_\alpha| | G_\alpha| \]
-\end{rem}
 
 \begin{proof}
 Define $f : O_\alpha \rightarrow \{ Hx : x \in G \}$ by the following. Take $\beta \in O_\alpha$, and choose $x \in G$ with $\beta = \alpha \cdot x$, and then give
@@ -698,23 +662,21 @@ as $h \in H$. Thus $f$ is also injective, and gives us the theorem.
 \end{proof}
 
 \begin{Cor}[Fundamental Counting Principle]
-Suppose $G$ acts on $\Omega$ and $| O_\alpha | = |G : G_\alpha|$. Then if $G$ is finite, $|O_\alpha| = |G| / |G_\alpha|$ and $|O_\alpha| \big| |G|$. 
+Suppose $G$ acts on $\Omega$. Then $| O_\alpha | = |G : G_\alpha|$. Then if $G$ is finite, $|G| = |O_\alpha| | G_\alpha| $,  $|O_\alpha| = |G| / |G_\alpha|$ and $|O_\alpha| \big| |G|$. 
 \end{Cor}
 
+
 \begin{Cor}
-Take a conjugation action of elements of $G$. Then
+Take a conjugation action of elements of $G$. Then $G_\alpha =C_G(\alpha)$ so
 \[ |Cl(g) |= |G : C_G(g)| \]
 \end{Cor}
 \begin{Ex}
-Take finite $G$ and suppose every two non-trivial elements of $G$ are conjugates, then $|G| \leq 2$. 
+Take finite $G$ and suppose every two non-trivial elements of $G$ are conjugates, then show $|G| \leq 2$. 
 \end{Ex}
 
-
-(TODO : FIX COR BELOW)
-%\begin{Cor}
-%Take a conjugation action on the subgroups $H \leq G$. Then 
-%\[ X \leq G : # of distinct $G$-conjugates of $X$ = |G : N_G(x)| \]
-%\end{Cor}
+\begin{Cor}
+Take a conjugation action on the subgroups $H \leq G$. Then for $X \leq G$, the number of distinct $G$-conjugates of $X$ is $|G : N_G(X)|$. 
+\end{Cor}
 
 \begin{Lem}
 Let $H,K \leq G$, with $H$ and $K$ finite. Then
@@ -722,16 +684,15 @@ Let $H,K \leq G$, with $H$ and $K$ finite. Then
 \end{Lem}
 
 \begin{proof}
-$HK = \{ hk : h \in H, k \in K\}$, $\Omega = \{Hx : x \in H\}$. Then $K$ acts on $\Omega$ by right multiplication.
+Take $HK = \{ hk : h \in H, k \in K\}$ and $\Omega = \{Hx : x \in H\}$. Let $K$ act on $\Omega$ by right multiplication. The remaining details are left as an exercise.
 \end{proof}
 
 \begin{Def}
-$G$ is a p-group if $|x| = p^k$ for some $k \geq 0$, for all $x \in G$. Then if $G$ is finite, $|G| = p^n$ for some $n \geq 0$. 
+$G$ is a \textbf{$p$-group} if the order of every element is a power of the same prime $p$. If $G$ is a finite $p$-group, then $|G| = p^n$ for some $n \geq 0$. 
 \end{Def}
 
 \begin{Lem}
-Take prime $p$ and $G$ a finite $p$-group with $|G| = p^n$. Then
-\[ Z(G) > 1 \]
+Take prime $p$ and $G$ a finite $p$-group with $|G| = p^n$. Then $Z(G) > 1$; $p$-groups have non trivial centres. 
 \end{Lem}
 
 \begin{proof}
@@ -752,7 +713,7 @@ Lagrange implies $p \big| |Z(G)|$.
 \begin{Def}
 For a standard group action, define:
 \[ \chi(g) = | \{ \alpha \in \Omega : \alpha \cdot g = \alpha \} | \]
-as the number of fixed points under $g$.
+as the number of fixed points under $g$. We call the the \textbf{Character} of $g$. 
 \end{Def}
 
 \begin{eg}
@@ -760,7 +721,7 @@ Take $G = S_5$ and $\Omega = \{ 1,2,3,4,5\}$. then
 \begin{align*}
 g &= (123)             &\chi(g) = 2 \\
 g &= e                &\chi(g) = 5 \\
-g = (12345)            &\chi(g) = 0
+g &= (12345)            &\chi(g) = 0
 \end{align*}
 
 \end{eg}
@@ -778,19 +739,17 @@ Consider a conjugation action of elements. Then
 \[ \chi(g) = |C_G(g)| \]
 \end{eg}
 
-\begin{thm}[C-F]
+\begin{thm}[Cauchy-Frobenius]
 Let $G$ act on $\Omega$ with both $G$ and $\Omega$ finite. Then the number of orbits is
 \[ \frac{1}{|G|} \sum_{x \in G} \chi(x) \]
 \end{thm}
 
 \begin{proof}
-Define $S = \{ (\alpha, g) : \alpha \in \Omega, g \in G, \alpha \cdot g = \alpha \}$. Then count the cardinality of this set. \\
-\\
-First, for each $\alpha in \Omega$, there exists $|G_\alpha$ elements $g$ such that $(\alpha, g) \in S$. Thus
+Define $S = \{ (\alpha, g) : \alpha \in \Omega, g \in G, \alpha \cdot g = \alpha \}$. Then count the cardinality of this set. First, for each $\alpha \in \Omega$, there exists $|G_\alpha|$ elements $g$ such that $(\alpha, g) \in S$. Thus
 \[ |S| = \sum_{\alpha \in \Omega} |G_\alpha| \]
 Secondly, for each $g \in G$, the number of elements of $\alpha \in \Omega$ paired with $g$ is $\chi(g)$. So
 \[ |S| = \sum_{g \in G} \chi(g) \]
-Combining these gives:
+Equating and dividing by $|G|$ these gives:
 \[ \frac{1}{|G|} \sum_{g \in G} \chi(g) = \frac{1}{|G|} \sum_{\alpha \in \Omega} |G_\alpha| = \sum_{\alpha \in \Omega} \frac{1}{|O_\alpha|} \]
 \end{proof}
 
@@ -801,7 +760,7 @@ If $G$ is finite and $|\Omega| >1$ then there exists an element $g \in G$ with $
 \end{Cor}
 
 \begin{eg}
-Conisder $D_4$ acting on $\Omega = \{ 1,2,3,4 \}$. Then $\chi(e) = 4$, $\chi(24) = \chi(13) = 2$ and also other characters vanish. Hence the number of orbits of this action is $\frac{1}{8} (8) = 1$. 
+Conisder $D_4$ acting on $\Omega = \{ 1,2,3,4 \}$. Then $\chi(e) = 4$, $\chi((24)) = \chi((13)) = 2$ and also other characters vanish. Hence the number of orbits of this action is $\frac{1}{8} (8) = 1$. 
 \end{eg}
 
 \begin{eg}
@@ -809,17 +768,14 @@ Consider $D_4$ again, this time acting by conjugation. Then $\chi(e) = \chi((13)
 \end{eg}
 
 \subsection{Sylow Theorems}
-\begin{thm}[Lagrange]
-If $G$ is finite, and $H \leq G$ then $|H| \, \big| \, |G|$.
-\end{thm}
-We want to understand a form of converse: if $m \, \big| \, |G|$ then does there exist a subgroup $H \leq G$ with $|H| = m$?
+Recall Lagrange's theorem: If $G$ is finite, and $H \leq G$ then $|H| \, \big| \, |G|$. We want to understand a form of converse: if $m \, \big| \, |G|$ then does there exist a subgroup $H \leq G$ with $|H| = m$?
 
 \begin{Ex}
 Does there exist a subgroup of $A_4$ of order 6?
 \end{Ex}
 
 \begin{Lem}
-Let $n = p^a m$. Then $^nC_{p^a} \equiv m \mod p$
+Let $n = p^a m$. Then $^nC_{p^a} = \binom{n}{p^a} \equiv m \mod p$
 \end{Lem}
 
 \begin{proof}
@@ -832,11 +788,12 @@ Then compare coefficients to get
 \end{proof}
 
 \begin{thm}[Sylow I]
-If $G$ is a finite group with $|G| = p^a m$ for some prime $p$ and $m$ with $\gcd(p,m)= 1$. Then $G$ has a subgroup of order $p^a$.
+If $G$ is a finite group with $|G| = p^a m$ for some prime $p$ and $m$ coprime with $p$. Then $G$ has a subgroup of order $p^a$.
 \end{thm}
 
 \begin{proof}
-Take $\Omega = \{ X \subset G : |X| = p^a \}$. Then $|Omega| = ^{|G|}C_{p^a} \equiv m \neq 0 \mod p$. Let $G$ act on $\Omega$ by right multiplication (which is well defined as $|Xg| = |X|$). Then $p$ does not divide $|\Omega|$ so there exists some orbit $O$ where $p$ does not divide $|O|$. Let $x \in O$. By the fundamental counting principle, $|O| |G_x| = |G|$. Considering divisibility of $|G|$ by $p^a$ gives $p^a \big| \, |G_x|$ so $p^a \leq |G_x|$. Now for any $X \in \Omega$ with $X \supseteq \{x\}$ and $y \in X$ and $h \in G_x$, $yh \in Xh = X$. Thus $xG_x \subseteq X$, so $|G_x| = |xG_x| \leq |X| = p^a$, and hence $|G_x| \leq p^a$. Thus $G_x$ has order $p^a$, giving us the desired subgroup.    
+Take $\Omega = \{ X \subset G : |X| = p^a \}$. Then $|\Omega| = ^{|G|}C_{p^a} \equiv m \neq 0 \mod p$. Let $G$ act on $\Omega$ by right multiplication (which is well defined as $|Xg| = |X|$). Then $p$ does not divide $|\Omega|$ so there exists some orbit $O$ where $p$ does not divide $|O|$. Let $X \in O$. By the fundamental counting principle, $|O| |G_X| = |G|$. Since $p^a$ divides $|G|$ but $p$ does not divide $|O|$, $p^a | |G_X|$ and thus $p^a \leq |G_X|$. Now take $x \in X$, and since $G_X$ sabilises $X$ we have $G_X x \subseteq X$. Thus $|G_X| = |G_X x| \leq |X| = p^a$. Thus $G_X$ has order $p^a$, giving us the desired subgroup.
+%Let $x \in O$. By the fundamental counting principle, $|O| |G_x| = |G|$. Considering divisibility of $|G|$ by $p^a$ gives $p^a \big| \, |G_x|$ so $p^a \leq |G_x|$. Now for any $X \in \Omega$ with $X \supseteq \{x\}$ and $y \in X$ and $h \in G_x$, $yh \in Xh = X$. Thus $xG_x \subseteq X$, so $|G_x| = |xG_x| \leq |X| = p^a$, and hence $|G_x| \leq p^a$. Thus $G_x$ has order $p^a$, giving us the desired subgroup.    
 \end{proof}
 
 \begin{Def}
@@ -846,7 +803,7 @@ Let $G$ have $|G| = p^a m < \infty$ for prime $p$ and $\gcd(p,m) = 1$. Then a \t
 
 
 \begin{Cor}
-If $|G|$ is finite and $p \big| \, |G|$ for prime $p$ then $G$ has an element of order $p$. 
+If $|G|$ is finite and $p \, \big| \, |G|$ for prime $p$ then $G$ has an element of order $p$. 
 \end{Cor}
 
 \begin{proof}
@@ -906,13 +863,13 @@ Let $G$ be a finite group. Then $\text{Syl}_p(G)$ is a single conjugacy class of
 $|G| = p^a m$ with $\gcd(p, m) =1$, then there exists an $H \leq G$ with $|H| = p^a$. $\text{Syl}_p(G)$ is a single conjugacy class of $G$. 
 
 \begin{thm}
-$G$ finite, $P \leq G$ a $p$-subgroup and $S \in \text{Syl}_p(G)$ then $P \subseteq S^x$ for some $x \in G$. I.e., every $p$-subgroups is contained in some sylow $p$-subgroup of $G$
+$G$ finite, $P \leq G$ a $p$-subgroup and $S \in \text{Syl}_p(G)$ then $P \subseteq S^x$ for some $x \in G$; i.e., every $p$-subgroups is contained in some sylow $p$-subgroup of $G$.
 \end{thm}
 
 \begin{proof}
 Let $\Omega = \{ Sx : x \in G\}$. Let $P$ act on $\Omega$ by right multiplication. 
 \[ (Sx) \cdot y = S(xy) \]
-$|\Omega| = |G : S|$ is not divisible by $p$ since $S \in \text{Syl}_p(G)$. Thus some orbit of the action of $P$ on $\Omega$ must have size not divisible by $p$. But $P$ is a p-group, so all those orbits have $p$-power size by FCP. Since only $p$-power not divisible by $p$ is $1$, there exists some orbit of size $1$. Therefore $P$ stabilisies $Sx$ for some $x \in G$. Let $y \in P$, so $Sx = Sx \cdot y = S(xy)$. Thus
+$|\Omega| = |G : S|$ is not divisible by $p$ since $S \in \text{Syl}_p(G)$. Thus some orbit of the action of $P$ on $\Omega$ must have size not divisible by $p$. But $P$ is a p-group, so all those orbits have $p$-power size by the  Fundamental Counting Principle. Since the only $p$-power not divisible by $p$ is $1$, there exists some orbit of size $1$. Therefore $P$ stabilisies $Sx$ for some $x \in G$. Let $y \in P$, so $Sx = Sx \cdot y = S(xy)$. Thus
 \[ S^x = x^{-1} S x = x^{-1} S xy = S^x y \]
 so $y \in S^x$. Thus $P \subseteq S^x$.
 \end{proof}
@@ -921,18 +878,22 @@ so $y \in S^x$. Thus $P \subseteq S^x$.
 Take $S \in \text{Syl}_p(G)$. Then $|S^x| = |S|$ only if $S^x \in \text{Syl}_p(G)$. If $P$ is a $p$-subgroup of $G$ then $P \subseteq $ some sylow $p$-group. Thus $P \leq S^x$ for some $x \in G$. But then $|P| = |S^x|$ so $P = S^x$. Therefore there exists just one conjugacy class of Sylow $p$-subgroups. 
 \end{proof}
 
+\begin{Def}
+Define $n_p(G) = |\text{Syl}_p(G) |$, the number of Sylow $p$-subgroups of $G$.  
+\end{Def}
+
 \begin{Cor}
-$\# \text{Syl}_p(G) = | G : N_G(P) |$ for $P \in \text{Syl}_p(G)$. Also $\# \text{Syl}_p(G) \big| |G :P|$.
+$n_p(G) = \# \text{Syl}_p(G) = | G : N_G(P) |$ for $P \in \text{Syl}_p(G)$. Also $\# \text{Syl}_p(G) \big| |G :P|$.
 \end{Cor}
 
 
 \begin{Cor}
-Let $S \in \text{Syl}_p(G)$ TFAE. Then
+Let $S \in \text{Syl}_p(G)$. Then the following are equivalent:
 \begin{enumerate}
-\item $S \triangleleft G$
-\item $S$ is unqiue Sylow $p$-subgroup of $G$
-\item Every $p$-subgroup of $G$ is contained in $S$
-\item $S$ characteristic subgroup of $G$
+\item $S \triangleleft G$;
+\item $S$ is unqiue Sylow $p$-subgroup of $G$;
+\item Every $p$-subgroup of $G$ is contained in $S$; and
+\item $S$ characteristic subgroup of $G$.
 \end{enumerate}
 
 \end{Cor}
@@ -946,16 +907,13 @@ This means that we can prove that a group is not simple by showing that $G$ has 
 \end{rem}
 
 \begin{eg}
-Take $|G| = 360 = 2^3 \cdot 3^2 \cdot 5$. Then $N_p(G) = \# \text{Syl}_p(G)$ thus
-\[ N_3(G) \big| 2^3 \cdot 5 \]
-Thus 
-\[ N_3(G) \in \{ 1,2,4,8,5,10,20,40\} \]
+Take $|G| = 360 = 2^3 \cdot 3^2 \cdot 5$. Then $n_p(G) = \# \text{Syl}_p(G)$ thus $ n_3(G) \big| 2^3 \cdot 5$ and so
+\[ n_3(G) \in \{ 1,2,4,8,5,10,20,40\} \]
 \end{eg}
 
 
 \begin{thm}[Sylow III]
-If $G$ is a finite group, then
-\[ N_p(G) = \# \text{Syl}_p(G) \quad \text{and} \quad N_p(G) \cong 1 \mod p \]
+If $G$ is a finite group, then $n_p(G) \cong 1 \mod p$.
 \end{thm}
 
 \begin{Lem}
@@ -965,14 +923,16 @@ Take finite $G$, $S \in \text{Syl}_p(G)$. Let $P$ be a $p$-subgroup of $N_G(S)$.
 $S$ a Sylow $p$-subgroup with $S \leq N_P(S)$ implies $S \in \text{Syl}_P(N_G(S))$. But by definition $S \triangleleft N_G(S)$ so $S$ is unique, and thus $P \subseteq S$ by the previous corollary. 
 \end{proof}
 
+
+
 \begin{cl}
 $N_P(S) \leq S$
 \end{cl}
-\begin{proof}[Claim]
+\begin{proof}[Proof of Claim]
 Take $G$; $S \in \text{Syl}_p(G)$. $N_p(S) \leq P$ only if $N_p(S)$ is a $p$-group. Which implies $N_p(S)$ is a $p$-subgroup of $N_G(S)$, and thus $N_P(S) \leq S$. 
 \end{proof}
 
-\begin{proof}[Theorem]
+\begin{proof}[Proof of Sylow III]
 Let $P \in \text{Syl}_p(G)$. Let $P$ act by conjugation on $\text{Syl}_p(G)$. Since $P$ stabilises itself under conjugation, $\{P\}$ is an orbit under the action. If there is just one orbit, then we are done. Otherwise, let $S \in \text{Syl}_p(G)$ where $S \neq P$. Let $O$ be the orbit of $S$. Then $|O| = |P : N_P(S)|$. Now $N_P(S) \leq S$ from the claim above, and $N_P(S) \leq P$, so $N_P(S) \leq P \cap S$. But also $x \in P \cap S$ only if $x \in S$, so $x$ normalises $S$, and so $N_P(S) \geq P \cap S$. Therefore $|O| = |P : P\cap S|$. But $S \neq P$, so $|P : P \cap S| = p^e$ for some $e \geq 1$. Thus
 \[ N_P(S) = 1 + \sum_i p^{e_i} \quad \text{and} \quad N_P(S) \cong 1 \mod p \]
 \end{proof}
@@ -981,7 +941,7 @@ Let $P \in \text{Syl}_p(G)$. Let $P$ act by conjugation on $\text{Syl}_p(G)$. Si
 \section{Thursday $15^{th}$ March}
 
 \begin{eg}
-Take $G = \text{Sym}(4) = \langle (1234), (12) \rangle$ (with $|G| = 24 = 2^3 \cdot 3$. Then the factors of $3$ are only 1 and 3, which are both congruent to $1\mod 2 = p$. We can construct three subgroups of order 8:
+Take $G = \text{Sym}(4) = \langle (1234), (12) \rangle$ (with $|G| = 4! = 24 = 2^3 \cdot 3$). Then the factors of $3$ are only 1 and 3, which are both congruent to $1\mod 2 = p$. We can construct three subgroups of order 8:
 \begin{align*}
 S &= \langle (12), (13)(24) \rangle \\
 T &= \langle (24), (14)(23) \rangle \\
@@ -1021,16 +981,16 @@ We have:
 \begin{enumerate}
 \item $|\text{Orbit of Sylow }p\text{-subgroups}| \, \big| \, |G|$. Thus $|O| |N_G(P)| = |G|$ and $|O| \, \big| \, |G:P|$.
 \item This is just Sylow III
-\item Take $S \in \text{Syl}_p(G)$ and $H = N_G(S)$. Then as $G$ os simple and $1 < S < G$, $S$ is not normal in $G$ so $n_p > 1$. Let $G$ act on $\Omega = \{ Hx : x \in G \}$ by right multiplication. Then $|\Omega| = n_p > 1$. Define a homomorphism $\phi : G \rightarrow \text{Sym}(n_p)$. Then $\ker \phi \triangleleft G$ only if $\ker \phi = \{1\}$. So as $G$ is isomorphic to a subgroup of $\text{Sym}(n_p)$ we must have $|G| \, \big| \, n_p! = |\text{Sym}(n_p)|$. 
+\item Take $S \in \text{Syl}_p(G)$ and $H = N_G(S)$. Then as $G$ is simple and $1 < S < G$, $S$ is not normal in $G$ so $n_p > 1$. Let $G$ act on $\Omega = \{ Hx : x \in G \}$ by right multiplication. Then $|\Omega| = n_p > 1$. Define a homomorphism $\phi : G \rightarrow \text{Sym}(n_p)$. Then $\ker \phi \triangleleft G$ only if $\ker \phi = \{1\}$. So as $G$ is isomorphic to a subgroup of $\text{Sym}(n_p)$ we must have $|G| \, \big| \, n_p! = |\text{Sym}(n_p)|$. 
 \end{enumerate}
 \end{proof}
 
 \begin{eg}
-Let $|G| = 10^6 = 2^6 \cdot 5^6$. Then $G$ is not simple. To see this, consider $n_5 | 2^6$ and $n_5 \equiv 1 \mod 5$, so $n_5 \in \{1, 16\}$. If $G$ were simple, then $|G| \, \big| \, 16!$, but this is clearly false. Hence $G$ is not simple. 
+Let $|G| = 10^6 = 2^6 \cdot 5^6$. Then $G$ is not simple. To see this, consider $n_5 | 2^6$ and $n_5 \equiv 1 \mod 5$, so $n_5 \in \{1, 16\}$. If $G$ were simple, then $|G| \, \big| \, 16!$, but this is clearly false as the highest power of $5$ dividing $16!$ is $5^3$. Hence $G$ is not simple. 
 \end{eg}
 
 \begin{eg}
-Let $|G| = 21 = 3 \cdot 7$. $n_7 | 3$ and $n_7 \equiv 1 \mod 7$ thus $n_7 = 1$, so $G$ has a unique sylow $7$-subgroup. $P \in \text{Syl}_y(G)$. Then $G / P \simeq C_3$, thus $G' \leq P$. Suppose $Q \triangleleft G$ and $|Q| = 3$. Then $G' \leq Q$, which implies $G' \leq P \cap Q = \{1\}$. Hence there only exists such a $Q$ is $G$ is abelian. If $G$ is non-abelian, then $G$ has a unique Sylow 7-subgroup and 7 Sylow 3-subgroups. 
+Let $|G| = 21 = 3 \cdot 7$. $n_7 | 3$ and $n_7 \equiv 1 \mod 7$ thus $n_7 = 1$, so $G$ has a unique sylow $7$-subgroup. $P \in \text{Syl}_7(G)$. Then $G / P \simeq C_3$, thus $G' \leq P$. Suppose $Q \triangleleft G$ and $|Q| = 3$. Then $G' \leq Q$, which implies $G' \leq P \cap Q = \{1\}$. Hence there only exists a unique Sylow $3$-subgroup $Q$ if $G$ is abelian. If $G$ is non-abelian, then $G$ has a unique Sylow 7-subgroup and 7 Sylow 3-subgroups. 
 \end{eg}
 
 \begin{Lem}
@@ -1050,7 +1010,7 @@ If $|G| = p^2 \cdot q$ with distinct primes $p,q$, then either $G$ has a normal 
 \end{Lem}
 
 \begin{eg}
-If $|G| = 30 = 2 \cdot 3 \cdot 5$ then $G$ is not simple.
+If $|G| = 30 = 2 \cdot 3 \cdot 5$ then $G$ is not simple. Count the elements in each of the Sylow $p$-subgroups.
 \end{eg}
 
 
@@ -1071,7 +1031,7 @@ If $|G| = 30 = 2 \cdot 3 \cdot 5$ then $G$ is not simple.
 
 Take groups $G,H$. Then define
 \[ G \times H = \{ (g ,h) : g \in G \ h \in H \} \]
-Call this the external direct product, and it is a group when  $(g,h) \cdot (a,b) = (ga, hb)$. We want to understand when a group $G$ can be written as a direct product $G \simeq H \times K$, for some $H, K \leq G$.  
+Call this the external direct product, and it is a group under the operation $(g,h) \cdot (a,b) = (ga, hb)$. We want to understand when a group $G$ can be written as a direct product $G \simeq H \times K$, for some $H, K \leq G$.  
 
 \begin{thm}
 Let the group $G$ have subgroups $G_i$ for $1 \leq i \leq n$ where:
@@ -1084,9 +1044,7 @@ Then $G \simeq G_1 \times G_2 \times \cdots \times G_n$.
 \end{thm}
 
 \begin{proof}
-Let $g \in G$. Then by (2) every $g \in G$ can be written $g = g_1 g_2 \cdots g_n$. Suppose that also $g = g_1 ' \cdots g_n '$. Then by (1), $g_i  (g_i')^{-1} = g_1^{1} g_1' \cdots g_{i-1}^{-1} g_{i-1}' g_{i+1}^{-1} g_{i+1}' \cdots g_n^{-1} g_n'$. The left hand side is in $G_i$ and the other side is in $G_1 \cdots G_{i-1}G_{i+1} \cdots G_n$ so by (3) $g_i (g_i')^{-1} = 1$, or rather $g_i = g_i '$. Hence the representation of $g$ is unique. \\
-\\
-Now define $\phi ; G \rightarrow G_1 \times G_2 \times \cdots \times G_n$ by $g \mapsto (g_1, g_2, \dots, g_n)$. Exercise: show that $\phi$ is an isomorphism. 
+Let $g \in G$. Then by (2) every $g \in G$ can be written $g = g_1 g_2 \cdots g_n$. Suppose that also $g = g_1 ' \cdots g_n '$. Then by (1), $g_i  (g_i')^{-1} = g_1^{1} g_1' \cdots g_{i-1}^{-1} g_{i-1}' g_{i+1}^{-1} g_{i+1}' \cdots g_n^{-1} g_n'$. The left hand side is in $G_i$ and the other side is in $G_1 \cdots G_{i-1}G_{i+1} \cdots G_n$ so by (3) $g_i (g_i')^{-1} = 1$, or rather $g_i = g_i '$. Hence the representation of $g$ is unique. Now define $\phi ; G \rightarrow G_1 \times G_2 \times \cdots \times G_n$ by $g \mapsto (g_1, g_2, \dots, g_n)$. Exercise: show that $\phi$ is an isomorphism. 
 \end{proof}
 \begin{rem}
 (1) is equivalent to (1'): $G_i \triangleleft G$ for all $1 \leq i \leq n$. 
@@ -1097,7 +1055,7 @@ If $G = MN$ for $N, M \triangleleft G$ with $M \cap N = \{1\}$. Then $G = M \tim
 \end{Cor}
 
 \begin{Def}
-Take a finite group $G$, with $S_p \triangleleft G$ for all $ p \big| |G|$. Then we say $G$ \textit{nilpotent}. 
+Take a finite group $G$ which has a unique (and hence normal) Sylow $p$-subgroup for every prime $p \, \big| \, |G|$. Then we say $G$ is \textbf{nilpotent}. 
 \end{Def}
 \begin{rem}
 All abelian groups are nilpotent.
@@ -1105,17 +1063,17 @@ All abelian groups are nilpotent.
 
 
 \begin{thm}
-Let $G$ be a finite nilpotent group. Then 
+Let $G$ be a finite nilpotent group with unique Sylow subgroups $S_{p_i}$ for each prime $p_i \, \big| \, |G|$. Then 
 \[ G = S_{p_1} \times S_{p_2} \times \cdots S_{p_k} \]
 for where $P = \{p_i : 1 \leq i \leq k\}$ list the primes dividing $|G|$.
 \end{thm}
 
 \begin{proof}
 (1') is satisfied by the definition of nilpotent groups. Then consider $S_{p_1} S_{p_2} \cdots S_{p_k} \leq G$. Note that $| S_p| \big| |S_{p_1} \cdots S_{p_k}|$ for all $p \in P$. Thus
-\[ \prod_{p \in P} |S_p| \Big| | S_{p_1} \cdots S_{p_k} | \]
+\[ \left( \prod_{p \in P} |S_p| \right) \Big| | S_{p_1} \cdots S_{p_k} | \]
 But then $|G| = \prod_{p \in P} |S_p|$ so $G = S_{p_1} \cdots S_{p_k}$. So (2) is satisfied. Let $q \in P$. Then 
 \[ \left| \prod_{p \in P \setminus \{ q\}} S_p \right| \quad \text{divides} \quad \prod_{p \in P \setminus \{ q\}} |S_p| \]
-But $q$ does not divide $\prod_{p \in P \setminus \{ q\}} |S_p|$ so $q$ does not divide $\left|\prod_{p \in P \setminus \{ q\}} S_p \right|$ either. But $S_q \cap \prod_{p \in P \setminus \{ q\}} S_p \leq S_q$ is a group of $q$-power order. Thus $S_q \cap \prod_{p \in P \setminus \{ q\}} S_p = \{ 1 \}$ and so (3) is satisfied too. Hence applying the previous theorem gives
+But $q$ does not divide $\prod_{p \in P \setminus \{ q\}} |S_p|$ so $q$ does not divide $\left|\prod_{p \in P \setminus \{ q\}} S_p \right|$ either. But $S_q \cap \prod_{p \in P \setminus \{ q\}} S_p \leq S_q$ is a group of $q$-power order. Thus $S_q \cap \left( \prod_{p \in P \setminus \{ q\}} S_p \right) = \{ 1 \}$ and so (3) is satisfied too. Hence applying the previous theorem gives
 \[ G = S_{p_1} S_{p_2} \cdots S_{p_k} \]
 \end{proof}
 
@@ -1127,9 +1085,11 @@ Let $G$ be a finite abelian $p$ group. Let $C \leq G$ be a cyclic subgroup of ma
 \begin{proof}
 If $C = G$ then take $B = \{1\}$ and we are done. Otherwise, $C < G$. Take $x \in G \setminus C$ of smallest possible order, with $x \neq 1$. Now $|x^p| < |x|$ so $x^p \in C$. If $C = \langle x^p \rangle $ then $|x| = p|C|$ but this contradicts the choice of $C$. Therefore $x^p = y^p$ for some $y \in C$. But $x \notin C$ so $xy^{-1} \notin C$, so $|x| \leq |xy^{-1}|$. But $(xy^{-1})^p = x^p (y^p)^{-1} = 1$ as $G$ is abelian. Thus $|xy^{-1}| = p$ and so $|x| = p$. \\
 \\
-Take $X = \langle x \rangle$ and define $\phi : G \rightarrow G / X$. As $|X| = p$, $C \cap X = \{1\}$. Thus $\phi(C) = XC / X \simeq C / (C \cap X) \simeq C$. Hence $\phi |_C$ is an isomorphism. $\phi(C)$ is a cyclic subgroup of maximum order in $G / X$ (as otherwise it would contradict our choice of $C$). Since $|G / X| < |G|$ we can then apply induction on $|G|$ and conclude that $\phi(C)$ is direct factor of $G / X$. To see this: \\
+Take $X = \langle x \rangle$ and define $\phi : G \rightarrow G / X$. As $|X| = p$, $C \cap X = \{1\}$. Thus $\phi(C) = XC / X \simeq C / (C \cap X) \simeq C$. Hence $\phi |_C$ is an isomorphism. $\phi(C)$ is a cyclic subgroup of maximum order in $G / X$ (as otherwise it would contradict our choice of $C$). \\
 \\
-By the correspondence theorem, every subgroup of $G / X$ has the form $B / X$ for some $X \leq B \leq G$. By the inductive hypothesis, we can find $X \leq B \leq G$ such that $G / X \simeq \phi(C) \times (B / X)$. Since $G / X = \phi(C) (B / X)$, $G  = CB$, and also $\phi(C) \cap (B/X) = \{1\}$ and so $C \cap B \subseteq X, C$ so $C \cap B \subseteq C \cap X = \{ 1 \}$. Thus $G = C \times B$.  
+Since $|G / X| < |G|$ we can then apply induction on $|G|$ and conclude that $\phi(C)$ is direct factor of $G / X$. To see this, note that by the correspondence theorem, every subgroup of $G / X$ has the form $B / X$ for some $X \leq B \leq G$. By the inductive hypothesis, we can find $X \leq B \leq G$ such that $G / X \simeq \phi(C) \times (B / X)$. \\
+\\
+Since $G / X = \phi(C) (B / X)$, $G  = CB$, and also $\phi(C) \cap (B/X) = \{1\}$ and so $C \cap B \subseteq X, C$ so $C \cap B \subseteq C \cap X = \{ 1 \}$. Thus $G = C \times B$.  
 \end{proof}
 
 
@@ -1142,7 +1102,7 @@ Let $G$ be a finite abelian group. Then $G = C_1 \times C_2 \times \cdots \times
 \end{thm}
 
 \begin{proof}
-Consider an induction argument on the order of $G$. If $G$ is decomposable: i.e. $G = A \times B$ for $A,B < G$, then our by our inductive hypothesis is each of $A$ and $B$ are products of cyclic $p$-groups and so $G$ is too. Otherwise, by our previous theorems $G$ is a (finite abelian) $p$-group. Then our other result implies that $G$ is cyclic.
+Consider an induction argument on the order of $G$. If $G$ is decomposable: i.e. $G = A \times B$ for $A,B < G$, then our by our inductive hypothesis is each of $A$ and $B$ are products of cyclic $p$-groups and so $G$ is too. Otherwise, by our previous theorems $G$ is a (finite abelian) $p$-group. Then our previous result implies that $G$ is cyclic.
 \end{proof}
 
 
@@ -1166,7 +1126,7 @@ Every infinite abelian cyclic group is isomorphic to $(\ZZ, +)$.
 \end{Ex}
 
 \begin{Def}
-We say a group $G$ is torsion-free if no element of $G$ other than the identity has finite order. 
+We say a group $G$ is \textbf{Torsion-Free} if no non-trivial element of $G$ has finite order. 
 \end{Def}
 \begin{eg}
 $(\ZZ, +)$ is torsion free.
@@ -1180,7 +1140,7 @@ A non-trivial torsion-free finitely generated abelian group is isomorphic to the
 Let $A$ be an appropriate group. Choose a generating set $A = \langle a_1, \dots, a_n \rangle$ with minimal $n$ (which exists as $A$ is finitely generated). $A$ is also torsion free, so we cannot have
 \[ m_1 a_1 + m_2 a_2 + \cdots + m_n a_n = 0 \]
 for non-vanishing $m_i$, as otherwise we could construct a generating set with fewer than $n$ elements - a contradiction. Now let $A_i = \langle a_i \rangle$. Observe that $A_i \triangleleft A$ as $A$ is abelian. Also see that
-\[ A = A_i + A_2 + \cdots + A_n \]
+\[ A = A_1 + A_2 + \cdots + A_n \]
 from the definitions of our generating set and $A_i$s, and that 
 \[ A_i \cap (A_1 + \cdots + A_{i-1} + A_{i+1} + \cdots A_n) = 0, \]
 which can be seen from a similar argument as before. Therefore by our previous result:
@@ -1196,7 +1156,7 @@ Let $G$ be an arbitrary abelian group. The elements of finite order in $G$ form 
 \end{Lem}
 
 \begin{proof}
-Note that the identity has finite order, so $P \neq \varnothing$. Then take $x,y \in P$. $x^t = y^s = 1$, so $(xy^{-1})^{ts} = 1$ and thus $xy^{-1} \in P$. Hence $P \triangleleft G$. Now consider elements $Pg \in G / P$. If $|Pg| = m < \infty$, then $g^m \in P$, so $g$ has finite order. Thus $g \in P$ and so $Pg = P$ - i.e. the only element of $G / P$ of finite order is the identity and so it is torsion free. 
+Note that the identity has finite order, so $P$ is non-empty. Then take $x,y \in P$. $x^t = y^s = 1$, so $(xy^{-1})^{ts} = 1$ and thus $xy^{-1} \in P$. Hence $P \leq G$, and since $G$ is abelian we also get that $P \triangleleft G$. Now consider elements $Pg \in G / P$. If $|Pg| = m < \infty$, then $g^m \in P$, so $g$ has finite order. Thus $g \in P$ and so $Pg = P$ - i.e. the only element of $G / P$ of finite order is the identity and so it is torsion free. 
 \end{proof}
 
 
@@ -1213,16 +1173,16 @@ Let $G$ be a finitely generated abelian group with periodic subgroup $P$. Then $
 \end{thm}
 
 \begin{proof}
-By our previous result, $G / P$ is torsion free. Assume it is non trivial. Then $G / P \simeq \oplus_{n = 1}^n \ZZ_i$ generated by $p_{g_1}, p_{g_2}, \dots, p_{g_n}$. Then let $T =  \langle g_1, g_2, \dots, g_n \rangle$. It is an excerise to show that $T \cap P = 0$, so $T$ is torsion free. Suppose there exists a nontrivial relation
+By our previous result, $G / P$ is torsion free. Assume it is non trivial. Then $G / P \simeq \oplus_{i = 1}^n \ZZ_i$ generated by $Pg_1, Pg_2, \dots, Pg_n$. Then let $T =  \langle g_1, g_2, \dots, g_n \rangle$. It is an excerise to show that $T \cap P = 0$, so $T$ is torsion free. Suppose there exists a nontrivial relation
 \[ m_1g_1 + \cdots + m_n g_n = b \]
-for some $b \in P$. Then $(P_{g_1})^{m_1} \cdots (P_{g_n})^{m_n} = P$ as $Pb = P$. But $G / P$ is torsion free so $m_i = 0$ for all $i$. Thus $b = 0$. So again using our previous result $G \simeq P \times T$. 
+for some $b \in P$. Then $(Pg_1)^{m_1} \cdots (Pg_n)^{m_n} = P$ as $Pb = P$. But $G / P$ is torsion free so $m_i = 0$ for all $i$. Thus $b = 0$. So again using our previous result $G \simeq P \times T$. 
 \end{proof}
 
 \newpage
 \section{Thursday $22^{nd}$ March}
 
 \begin{Cor}
-Periodic subgroup of a finitely generated abelian group is finitely generated. 
+The periodic subgroup of a finitely generated abelian group is finitely generated. 
 \end{Cor}
 \begin{proof}
 $P \simeq G / T$ so we are done. 
@@ -1252,7 +1212,7 @@ The rank of a finitely generated abelian group is the number of infinite direct 
 \end{Def}
 
 \begin{thm}
-The rank of a finitely generated abelian group is an invariant
+The rank of a finitely generated abelian group is an invariant of the direct sum decomposition.
 \end{thm}
 
 \begin{Def}
@@ -1271,12 +1231,12 @@ Let
 \end{eg}
 
 \begin{Def}
-Take some set $X \neq \varnothing$ with index set $\Lambda$. So $X = \{ x_\lambda : \lambda \in \Lambda \}$. Then define
+Take some non-empty set $X$ with index set $\Lambda$; i.e., $X = \{ x_\lambda : \lambda \in \Lambda \}$. Then define
 \[ X^{-1} = \{ x_\lambda^{-1} : \lambda \in \Lambda \} \] 
 \end{Def}
 
 \begin{Def}
-A word in $X \cup X^{-1}$ is an ordered set of $n\geq 0$ elements each from $X \cup X^{-1}$ with repetitions allowed. The length of the word is $n$.
+A \textbf{Word} in $X \cup X^{-1}$ is an ordered set of $n\geq 0$ elements each from $X \cup X^{-1}$ with repetitions allowed. We call $n$ the \textbf{Length} of the word.
 \end{Def}
 
 \begin{eg}
@@ -1291,11 +1251,9 @@ If $X = \{ x , y\}$ then some words are:
 \end{eg}
 
 \begin{Def}
-For words, $u,v,w$ of $X$, we define the product $\cdot$ as:
-\[ w \cdot 1 = 1 \cdot w =  w\]
-And if $u = x_{\lambda_1}^{\epsilon_1} x_{\lambda_2}^{\epsilon_2} \cdots x_{\lambda_n}^{\epsilon_n}$ and $v = x_{\mu_1}^{\delta_1} x_{\mu_2}^{\delta_2} \cdots x_{\mu_m}^{\delta_m}$ then
+For words, $u = x_{\lambda_1}^{\epsilon_1} x_{\lambda_2}^{\epsilon_2} \cdots x_{\lambda_n}^{\epsilon_n}$ and $v = x_{\mu_1}^{\delta_1} x_{\mu_2}^{\delta_2} \cdots x_{\mu_m}^{\delta_m}$ of $X$, we define the product $\cdot$ as:
 \[ u \cdot v =  x_{\lambda_1}^{\epsilon_1} x_{\lambda_2}^{\epsilon_2} \cdots x_{\lambda_n}^{\epsilon_n} x_{\mu_1}^{\delta_1} x_{\mu_2}^{\delta_2} \cdots x_{\mu_m}^{\delta_m} \]
-i.e. it is the concatenation of the words
+i.e. it is the concatenation of the words. Note that is $w$ is the empty word, then $u \cdot w = w \cdot u = u$. 
 \end{Def}
 
 \begin{rem}
@@ -1303,7 +1261,7 @@ The set of all words on $X \cup X^{-1}$ with this product can be regarded as a s
 \end{rem}
 
 \begin{Def}
-We say two words $u,v$ on $X \cup X^{-1}$ are adjacent if there exist words $\zeta_1, \zeta_2$ on $X \cup X^{-1}$ and $a \in X \cup X^{-1}$ for which either
+We say two words $u,v$ on $X \cup X^{-1}$ are \textbf{Adjacent} if there exist words $\zeta_1, \zeta_2$ on $X \cup X^{-1}$ and $a \in X \cup X^{-1}$ for which either
 \begin{align}
 u = \zeta_1 \zeta_2 \qquad &\text{and} \qquad v = \zeta_1 a a^{-1} \zeta_2; \text{or} \\
 u = \zeta_1 a a^{-1} \zeta_2 \qquad &\text{and} \qquad v = \zeta_1 \zeta_2 
@@ -1315,11 +1273,11 @@ $x^{-1} x y y^{-1}$ os adjacent to both $yy^{-1}$ and $x^{-1} x$.
 \end{eg}
 
 \begin{rem}
-$u$ is adjacent to $v$ only if $v$ is adjacent to $u$. 
+$u$ is adjacent to $v$ if and only if $v$ is adjacent to $u$; adjacency is symmetric.  
 \end{rem}
 
 \begin{Def}
-Let $u,v$ be words on $X \cup X^{-1}$. We call $u$ equivalent to $v$ ($u \sim v$) if there exist some $\zeta_i$ for $1 \leq i \leq n$ on $X \cup X^{-1}$ such that $u = \zeta_1$, $v = \zeta_n$ and $\zeta_i$ is adjacent to $\zeta_{i+1}$ for all $1 \leq i < n$. 
+Let $u,v$ be words on $X \cup X^{-1}$. We call $u$ \textbf{Equivalent} to $v$ (and write $u \sim v$) if there exist some $\zeta_i$ for $1 \leq i \leq n$ on $X \cup X^{-1}$ such that $u = \zeta_1$, $v = \zeta_n$ and $\zeta_i$ is adjacent to $\zeta_{i+1}$ for all $1 \leq i < n$. 
 \end{Def}
 
 \begin{Lem}
@@ -1327,7 +1285,7 @@ $\sim$ is an equivalence relation on the set of all words on $X \cup X^{-1}$.
 \end{Lem}
 
 \begin{Def}
-For words $u, v$ on $X \cup X^{-1}$, with equivalent classes $[u], [v]$ under $\sim$. Then define the product of the classes as
+For words $u, v$ on $X \cup X^{-1}$, with equivalence classes $[u], [v]$ under $\sim$,  define the product of the classes as
 \[ [u] [v] = [uv] \]
 \end{Def}
 
@@ -1342,7 +1300,7 @@ It is an exercise to show that this then satisfies the group axioms.
 \end{proof}
 
 \begin{Def}
-The free group on a non-empty set $X$ is the set of equivalence classes of words on $X \cup X^{-1}$ with the product given above. Often write this as $F(X)$ or just $F$
+The free group on a non-empty set $X$ is the set of equivalence classes of words on $X \cup X^{-1}$ with the product given above. We often write this as $F(X)$ or just $F$ when $X$ is clear from context.
 \end{Def}
 
 \newpage
@@ -1353,7 +1311,7 @@ A word in $X \cap X^{-1}$ is called reduced if it has the form $x_{\lambda_1}^{\
 \end{Def}
 
 \begin{thm}
-Each equivalence class of words in $X \cap X^{-1}$ contains one and only one reduced word. 
+Each equivalence class of words in $X \cap X^{-1}$ contains one, and only one reduced word. 
 \end{thm}
 
 \begin{proof}
@@ -1374,7 +1332,7 @@ Now suppose $u$ and $v$ are two reduced words in $[w]$. Then $u \sim v$ by a seq
 \end{proof}
 
 \begin{Cor}
-if $|X| = |Y|$ then $F(X) \simeq F(Y)$. I.e., the cardinality of $X$ is an invariant of $F(X)$, and we (sometimes) call this the rank of $F(X)$. 
+If $|X| = |Y|$ then $F(X) \simeq F(Y)$: the cardinality of $X$ is an invariant of $F(X)$, and we (sometimes) call this the rank of $F(X)$. 
 \end{Cor}
 
 \begin{Lem}
@@ -1387,8 +1345,8 @@ Suppose $[a] \in F \setminus \{ 1 \}$ has finite order $|[a]| = n$. Take a reduc
 \begin{rem}
 We see:
 \begin{enumerate}
-\item if $X = \{x\}$ then $F(X)$ is the infinite cyclic group.
-\item is $|X| > 1$ then $F(X)$ is non-abelian
+\item if $X = \{x\}$ then $F(X)$ is the infinite cyclic group; and
+\item is $|X| > 1$ then $F(X)$ is non-abelian.
 \end{enumerate}
 \end{rem}
 
@@ -1398,7 +1356,7 @@ Let $X = \{x,y\}$, and $F = F(X)$. Then $X$ has the property that any reduced wo
 
 
 \begin{Def}
-A free basis for a free group $F$ is a generating set for $F$ with the property that the only reduced words in them inside the identity class is the empty word
+A \textbf{Free Basis} for a free group $F$ is a generating set for $F$ with the property that the only reduced words in them inside the identity class is the empty word
 \end{Def}
 
 Observe that $F$ can have many free bases, but that not every generating set is a free basis.  
@@ -1419,7 +1377,7 @@ Observe that $F$ can have many free bases, but that not every generating set is 
 \section{Tuesday $27^{th}$ March}
 
 \begin{thm}
-Let $F = F(X)$ where $X = \{ x_\lambda : \lambda \in \Lambda \}$. Take an arbitrary group $G$. If $\{ g_\lambda : \lambda \in \Lambda \} \subseteq G$ then there exists a unique homomorphism $\phi : F \rightarrow G$ with $x_\lambda \mapsto g_\lambda$ for all $\lambda in \Lambda$. 
+Let $F = F(X)$ where $X = \{ x_\lambda : \lambda \in \Lambda \}$. Take an arbitrary group $G$. If $\{ g_\lambda : \lambda \in \Lambda \} \subseteq G$ then there exists a unique homomorphism $\phi : F \rightarrow G$ with $x_\lambda \mapsto g_\lambda$ for all $\lambda \in \Lambda$. 
 \end{thm}
 
 \begin{proof}
@@ -1439,13 +1397,14 @@ Every free basis for $F_n$ has precisely $n$ elements.
 \end{Cor}
 
 
-\begin{thm}
+\begin{thm}[The Universal Property of Free Groups]
 Let $G = \langle g_\lambda : \lambda \in \Lambda \rangle$ have the property that any group $H$ containing a subset $\{h_\lambda : \lambda \in \Lambda \}$ the map $\theta : g_\lambda \mapsto h_\lambda$ can be uniquely extended to a homomorphism of $G$ into $H$. Then $G$ is a free group and $\{g_\lambda ; \lambda \in \Lambda\}$ is a free basis of $G$. 
 \end{thm}
 \begin{proof}
 Choose $H$ to be the free group with free basis $\{ h_\lambda : \lambda \in \Lambda\}$. There exists a unique homomorphism $\phi : H \rightarrow G$ with $h_\lambda \mapsto g_\lambda$. Thus $\theta\phi h_\lambda = h_\lambda$ and $\phi \theta g_\lambda = g_\lambda$. Thus $\theta$ is an isomorphism and so $G$ is the free group with free basis $\{ g_\lambda : \lambda \in \Lambda \}$.
 \end{proof}
 
+This property is often given as an equivalent definition of free groups:
 \begin{Def}
 A group $F$ is free on $X \subseteq F$ if, given an arbitrary group $H$ and map $\theta: F \rightarrow H$, there exists a unique homomorphism $\theta' : F \rightarrow G$ extending $\theta$. 
 \end{Def}
@@ -1454,7 +1413,7 @@ A group $F$ is free on $X \subseteq F$ if, given an arbitrary group $H$ and map 
 Every group is isomorphic to a factor group of a suitable free group. Every group with $n$ generators is isomorphic to a quotient of $F_n$. 
 \end{thm}
 \begin{proof}
-Let $G = \langle g_\lambda : \lambda \in \Lambda\rangle$ and $X = \{ x_\lambda : \lambda \in \Lambda \}$. Then there is a 1-1 correspondence between $X$ and $G$. Let $F = F(X)$, with free basis $X$. There exists a surjective homomorphism $\phi : F \rightarrow G$ with $x_\lambda \mapsto g_\lambda$. Then $G \simeq F / \ker \phi$. If $|\Lambda| = n$ then $F$ has rank $n$. 
+Let $G = \langle g_\lambda : \lambda \in \Lambda\rangle$ and $X = \{ x_\lambda : \lambda \in \Lambda \}$. Then there is an injective function $\theta : X \rightarrow G$. Let $F = F(X)$, with free basis $X$. There exists a surjective homomorphism $\phi : F \rightarrow G$ with $x_\lambda \mapsto g_\lambda$. Then $G \simeq F / \ker \phi$. If $|\Lambda| = n$ then $F$ has rank $n$. 
 \end{proof}
 
 \begin{Def}
@@ -1462,15 +1421,15 @@ Let $X$ be a set and let $\Delta$ be a set of words on $X \cup X^{-1}$. A group 
 \end{Def}
 
 \begin{eg}
-Take $G = \ZZ_6 = \langle x : x^6 = 1\rangle$. Then $G \simeq F_1 / \llangle x^6 \rrangle^G$. $x^6$ is a relator. $x^6 = 1$ is a relation.
+Take $G = \ZZ_6 = \langle x : x^6 = 1\rangle$. Then $G \simeq F_1 / \langle x^6 \rangle^G$. $x^6$ is a relator. $x^6 = 1$ is a relation.
 \end{eg}
 
 \begin{eg}
-$G = D_n = \langle x,y : x^n = 1, y^2 = 1, x^y = x^-1 \rangle$. Then $G \simeq F_2 / \llangle x^n, y^2, x^y x \rrangle^G$.
+$G = D_n = \langle x,y : x^n = 1, y^2 = 1, x^y = x^{-1} \rangle$. Then $G \simeq F_2 / \langle x^n, y^2, x^y x \rangle^G$.
 \end{eg}
 
 \begin{eg}
-$Q_8 = \langle x,y : x^2 = y^2, (xy)^2 = y^2 \rangle$. Then $Q_8 \simeq F_2 / \llangle x^2y^{-2}, (xy)^2y^{-2} \rrangle^G$. 
+$Q_8 = \langle x,y : x^2 = y^2, (xy)^2 = y^2 \rangle$. Then $Q_8 \simeq F_2 / \langle x^2y^{-2}, (xy)^2y^{-2} \rangle^G$. 
 \end{eg}
 
 
@@ -1484,7 +1443,7 @@ $Q_8 = \langle x,y : x^2 = y^2, (xy)^2 = y^2 \rangle$. Then $Q_8 \simeq F_2 / \l
 \begin{eg}
 Consider 
 \[ Q_8 = \left\langle a = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, b = \begin{pmatrix} 0 & i \\ i & 0 \end{pmatrix} \right\rangle \leq GL(2,\CC) \]
-Then $a^2 = b^2 = (ab^2)$. Now let $F$ be the free group of rank 2: $F = Free\{ x, y\}$. Define $\phi: F \mapsto Q_8$ by $x \mapsto a$ and $y \mapsto b$. Then $\phi( y^2x^{-2}) = 1$ and $\phi( (xy)^2y^{-2}) = 1$ so $x^2y^{-2}, (xy)^2y^{-2} \in \ker \phi$. Set $K = \langle x^2y^{-2}, (xy)^2y^{-2} \rangle^F$. We claim $K = \ker phi$. Thus we can write 
+Then $a^2 = b^2 = (ab^2)$. Now let $F_2$ be the free group of rank 2: $F_2 = F(\{ x, y\})$. Define $\phi: F \mapsto Q_8$ by $x \mapsto a$ and $y \mapsto b$. Then $\phi( y^2x^{-2}) = 1$ and $\phi( (xy)^2y^{-2}) = 1$ so $x^2y^{-2}, (xy)^2y^{-2} \in \ker \phi$. Set $K = \langle x^2y^{-2}, (xy)^2y^{-2} \rangle^F$. We claim $K = \ker \phi$. Thus we can write 
 \[ Q_8 = \langle x,y : x^2 = y^2, (xy)^2 = y^2 \rangle \]
 \end{eg}
 
@@ -1493,7 +1452,7 @@ Every group has presentation (although not necessarily finite)
 \end{Lem}
 
 \begin{proof}
-Let $G = \langle X \rangle$. Then $G$ is isomorphic to some quotient of $F = F(X)$. Declare any homomorphism $\theta : F \rightarrow G$. Let $R \subseteq F$ such that $\ker \phi = \langle R \rangle^F$. Now $G \simeq F / \ker \theta$ and so $G$ has presentation $\{ X : R \}$. 
+Let $G = \langle X \rangle$. Then $G$ is isomorphic to some quotient of $F = F(X)$. Declare any homomorphism $\theta : F \rightarrow G$. Let $R \subseteq F$ such that $\ker \theta = \langle R \rangle^F$. Now $G \simeq F / \ker \theta$ and so $G$ has presentation $\{ X : R \}$. 
 \end{proof}
 
 \begin{thm}[Von Dyck's Theorem (1882)]
@@ -1508,8 +1467,7 @@ Let $K_1 = \langle W_1 \rangle^F$ and $K_2 = \langle W_2 \rangle^F$. Note that $
 \begin{eg}
 Let $G = \langle a,b : a^2 = b^2 \rangle$ and $H = \langle a,b : a^2 = b^2, (ab)^2 = b^2 \rangle$. Then $H \simeq Q_8$ is a quotient of $G$. So is $H_2 = \langle a,b : a^2 = b^2, b^2 = 1 \rangle$ (this is called the infinite dihedral group). 
 \end{eg}
-
-Our strategy for using Von Dyck's theorem is: 
+This theorem allows us to find a lower bound on the order of a group from a given presentation, as any quotient of $G$ must have smaller order. Our strategy for using this is:
 \begin{enumerate}
 \item Show $|G| \leq n$
 \item Exhibit quotient $H$ of order at least $n$
