@@ -2750,7 +2750,7 @@ Some of the sporadic groups are $M_{11}$, a useful group in graph theory. $\math
 \end{eg}
 
 \begin{thm}[Feit - Thompson Theorem]
-Every finite group of odd order is soluble (and therefor not simple).
+Every finite group of odd order is soluble (and therefore not simple).
 \end{thm}
 
 
@@ -2793,7 +2793,7 @@ $\ZZ_6 = \ZZ_3 \times \ZZ_2 = \langle a,b : a^3, b^2, a^b = a \rangle$.
 \end{eg}
 
 \begin{rem}
-Ever direct product (DP) is a semi direct product (SDP).
+Every direct product (DP) is a semi direct product (SDP).
 \end{rem}
 
 \begin{eg}
@@ -2816,7 +2816,7 @@ Let $G = N \rtimes H$. For each $h \in H$, define $\theta_h : N \rightarrow N$ b
 \end{Lem}
 
 \begin{proof}
-For the first claim, see that $N \triangleleft G$ so $n^h \in N$. $\theta_h$ is indeed Homomorpic, injective, and surjective (as $\theta_h(h^{-1} n h) = n$). \\
+For the first claim, see that $N \triangleleft G$ so $n^h \in N$. $\theta_h$ is indeed Homomorphic, injective, and surjective (as $\theta_h(h^{-1} n h) = n$). \\
 \\
 Then $\theta(h_1 h_2) (n) = (h_1 h_2) n (h_1 h_2)^{-1} = \theta_{h_1} \circ \theta_{h_2} (n) = \theta(h_1) \circ \theta(h_2) (n)$, so $\theta$ is indeed a homomorphism.
 \end{proof}
@@ -2835,7 +2835,7 @@ $N \triangleleft G $, $H \leq G$, $\theta : H \rightarrow \text{Aut}(N)$ given b
 \end{Def}
 
 \begin{eg}
-If $\theta$ is the trivial map, then $G$ is the direect product of $N$ and $H$. 
+If $\theta$ is the trivial map, then $G$ is the direct product of $N$ and $H$. 
 \end{eg}
 
 \begin{Lem}
@@ -2850,18 +2850,18 @@ Take $g = G$ and suppose that it has expressions $g = n_1 h_1 = n_2 h_2$. Then $
 \begin{Def}
 Given $N$, $H$, $\theta: H \rightarrow \text{Aut}(N)$ with $h \mapsto \theta_h = (n \mapsto h n h^{-1})$, we define $G = N \rtimes_{\theta} H$ to be the set of ordered pairs
 \[ \{ (n,h) : n \in N, h \in H \} \]
-equipped with the opperation:
+equipped with the operation:
 \[ (n_1, h_1) \cdot (n_2, h_2) = ( n_1 \theta_{h_1} (n_2), h_1, h_2 ) \]
 \end{Def}
 
 \begin{rem}
-If $\theta$ maps $h \mapsto 1$ for all $h \in H$, then $N \rtimes_{theta} H = N \times H$. 
+If $\theta$ maps $h \mapsto 1$ for all $h \in H$, then $N \rtimes_{\theta} H = N \times H$. 
 \end{rem}
 
 \begin{thm}
 Let $N$ and $H$ be groups, and let $\theta : H \rightarrow \text{Aut}(N)$. Set $G = \{ (n,h) : n \in N, h \in H \}$ , $N_0 = \{ (n,1) : n \in N \}$, and $H_0 = \{ (1, h) : h \in H \}$. Then:
 \begin{enumerate}
-\item $G$ equiped with the product in the previous definition is a group
+\item $G$ equipped with the product in the previous definition is a group
 \item $N_0 \triangleleft G$ and $N_0 \simeq N$; 
 \item $H_0 \leq G$ and $H_0 \simeq H$; and
 \item $G = N_0 \rtimes H_0$. 
@@ -2870,7 +2870,7 @@ Let $N$ and $H$ be groups, and let $\theta : H \rightarrow \text{Aut}(N)$. Set $
 \end{thm}
 
 \begin{proof}
-$G$ is closed under the given opperation. It is associative, as
+$G$ is closed under the given operation. It is associative, as
 \[ (a,x) ((b,y) (c,z)) = (a \theta_x (b) \theta_y (c), xyz) = ((a,x)(b,y))(c,z))\]
 Then it has identity as
 \[ (n,h) (1,1) = (n \theta_h(1), h) = (n,h) \]
@@ -2900,7 +2900,7 @@ $\ZZ_p$ has $\text{Aut}(\ZZ_p) \simeq \ZZ_{p-1}$.
 \begin{rem}
 If $G = \ZZ_p \times \cdots \ZZ_p$ be an elementary abelian group of rank $d$. Then $\text{Aut}(G) \simeq GL(d,p)$. \\
 \\
-This is because we can create an isomorphism from $G$ to a vector space $V$ of dimension $d$ over the field $\ZZ_p$, and the autmorphisms of $G$ then correspond to the linear transformations on $V$. 
+This is because we can create an isomorphism from $G$ to a vector space $V$ of dimension $d$ over the field $\ZZ_p$, and the automorphisms of $G$ then correspond to the linear transformations on $V$. 
 \end{rem}
 
 \begin{rem}
@@ -2927,7 +2927,7 @@ The order of $\text{Aut}(N)$ is 2, containing the identity and inverting automor
 \begin{eg}
 Let $N = \ZZ_5 = \langle n : n^5 = 1 \rangle$ and $H = \langle h : h^2 = 1 \rangle$. Then $\text{Aut}(N) = \{ \phi_1, \dots, \phi_4 \}$ where $\phi_i L: n \mapsto n^i$. We must have $h \mapsto \phi_1, \phi_4$ as $|\phi_2| = |\phi_3| = 4$. Thus
 \[ N \rtimes_\theta = \langle n,h : n^5 = h^2 = 1, n^h = \theta_h(n) \rangle \]
-Where $\theta : h mapsto \theta_h = \phi_1, \phi_4$. In the first case, we get the direct product $\ZZ_5 \times \ZZ_2$ and in the second we get $D_5$. 
+Where $\theta : h \mapsto \theta_h = \phi_1, \phi_4$. In the first case, we get the direct product $\ZZ_5 \times \ZZ_2$ and in the second we get $D_5$. 
 \end{eg}
 
 \begin{eg}
